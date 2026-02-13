@@ -2,59 +2,382 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Opioid Crisis Intervention | Suriyapriya S.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Readmission Risk Assessment | Suriyapriya S.</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <style>
-        /* Reuse styles from diabetes file, just paste the <style> block here */
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; color: #37474f; background-color: #fafafa; }
-        .header { background-color: #fce4ec; padding: 80px 20px; text-align: center; border-bottom: 5px solid #ec407a; }
-        .title { font-size: 2.8rem; font-weight: 900; color: #37474f; }
-        .subtitle { font-size: 1.2rem; color: #ec407a; font-weight: 600; text-transform: uppercase; margin-top: 10px; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .section { display: flex; flex-wrap: wrap; margin-bottom: 60px; align-items: center; }
-        .section:nth-child(even) { flex-direction: row-reverse; }
-        .text-col { flex: 1; padding: 30px; min-width: 300px; }
-        .img-col { flex: 1; padding: 20px; min-width: 300px; }
-        .img-placeholder { width: 100%; border-radius: 8px; }
-        h2 { color: #ec407a; font-size: 1.8rem; margin-bottom: 15px; font-weight: 800; }
-        p, li { font-size: 1.1rem; line-height: 1.8; color: #546e7a; margin-bottom: 10px; }
-        .back-btn { display: inline-block; padding: 10px 25px; background: #37474f; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; margin-bottom: 40px; }
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #546e7a; /* Slate Grey Text */
+            background-color: #fafafa; /* Off-white background */
+            line-height: 1.8;
+        }
+
+        /* --- HEADER --- */
+        .project-header {
+            background-color: #fce4ec; /* Subtle Pink Background */
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 6px solid #ec407a; /* Hot Pink Border */
+        }
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #37474f; /* Dark Slate */
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        .project-subtitle {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ec407a; /* Hot Pink */
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header-meta {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #78909c;
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-bar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand { font-weight: 800; font-size: 1.2rem; color: #ec407a; text-decoration: none; }
+        .nav-links a {
+            color: #37474f;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #ec407a; }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* --- SECTIONS (ALTERNATE LAYOUT) --- */
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 80px;
+            gap: 50px;
+        }
+        
+        /* Alternate: Even sections flip order */
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text-col {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .img-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ec407a; /* Hot Pink Topic Headings */
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #37474f;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p { margin-bottom: 20px; text-align: justify; }
+        
+        ul { list-style: none; padding: 0; }
+        li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        li::before {
+            content: "•";
+            color: #ec407a;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* --- IMAGES --- */
+        .img-placeholder {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+        .img-placeholder:hover { transform: translateY(-5px); }
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #90a4ae;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* --- TABLE STYLING --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        th { background-color: #ec407a; color: white; padding: 15px; text-align: left; font-weight: 700; }
+        td { padding: 15px; border-bottom: 1px solid #eee; color: #546e7a; }
+        tr:last-child td { border-bottom: none; }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #37474f;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 100px;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 35px;
+            background-color: #ec407a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background-color: white; color: #ec407a; }
+        
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background-color: #fce4ec;
+            border-left: 5px solid #ec407a;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #37474f;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1 class="title">Opioid Crisis Intervention</h1>
-        <div class="subtitle">Predict-Then-Optimize Framework for Safe Consumption Sites</div>
-    </div>
-    <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
 
-        <div class="section">
-            <div class="text-col">
-                <h2>Project Overview</h2>
-                <p>The opioid crisis is a critical public health challenge in Allegheny County. This project aimed to scientifically determine the optimal locations for new Safe Consumption Sites (SCS) to maximize life-saving coverage. We utilized a "Predict-Then-Optimize" framework to forecast future overdose events and place resources where they are needed most.</p>
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-brand">Suriyapriya S.</a>
+        <div class="nav-links">
+            <a href="index.html">Portfolio Home</a>
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#results">Results</a>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container" style="padding:0;">
+            <h1 class="project-title">Diabetes Readmission Risk Assessment</h1>
+            <div class="project-subtitle">A Clinical Decision Support System (CDSS)</div>
+            <div class="header-meta">
+                <span style="margin: 0 15px;"><i class="fa fa-calendar"></i> Spring 2025</span>
+                <span style="margin: 0 15px;"><i class="fa fa-code"></i> Python, SQL, Streamlit</span>
+                <span style="margin: 0 15px;"><i class="fa fa-users"></i> Role: Project Lead & Data Scientist</span>
             </div>
-            <div class="img-col"><img src="https://placehold.co/500x350/ec407a/white?text=Allegheny+Map" class="img-placeholder"></div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="section" id="problem">
+            <div class="text-col">
+                <h2>Executive Summary & Problem Context</h2>
+                <p>
+                    Hospital readmissions among diabetic patients present a persistent challenge to healthcare systems, with national rates exceeding <strong>11.7%</strong>. These avoidable returns strain nursing capacity, incur financial penalties under Medicare's HRRP (up to 3% of reimbursements), and expose patients to hospital-acquired complications.
+                </p>
+                <p>
+                    Currently, physicians rely on subjective judgment to assess readmission risk, leading to inconsistent discharge planning. Important indicators like HbA1c levels and recent medication changes are often underutilized in the decision-making process.
+                </p>
+                <div class="highlight-box">
+                    <strong>The Gap:</strong> "Identifying high-risk diabetic patients before discharge remains a major gap in healthcare delivery... existing EHR tools are general-purpose and lack diabetes-specific granularity."
+                </div>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Current+vs+Future+Process+Model" class="img-placeholder">
+                <div class="caption">Figure 1: Transitioning from ad-hoc judgment to Data-Driven Decision Support.</div>
+            </div>
         </div>
 
-        <div class="section" style="background-color: white; border-radius: 12px; padding: 20px;">
-            <div class="img-col"><img src="https://placehold.co/500x350/37474f/white?text=ARIMA+Forecast" class="img-placeholder"></div>
+        <div class="section" id="solution">
+            <div class="img-col">
+                <img src="https://placehold.co/600x500/37474f/white?text=Database+Schema+&+Architecture" class="img-placeholder">
+                <div class="caption">Figure 2: Database Schema linking Patient Info, Visits, and Predictions.</div>
+            </div>
             <div class="text-col">
-                <h2>Methodology</h2>
+                <h2>IT Solution Architecture</h2>
+                <p>
+                    We designed a comprehensive IT ecosystem to bridge this gap. The solution integrates a <strong>Machine Learning Microservice</strong> with a user-friendly <strong>Streamlit Interface</strong> and a robust <strong>PostgreSQL Database</strong>.
+                </p>
+                <h3>Database Schema Design</h3>
+                <p>The backend relies on a relational database with four primary tables to ensure data integrity and longitudinal tracking:</p>
                 <ul>
-                    <li><strong>Prediction:</strong> Developed <strong>106 individual ARIMA time-series models</strong>, one for every ZIP code in the county, to accurately forecast fatal overdose events.</li>
-                    <li><strong>Optimization:</strong> Formulated a <strong>Maximal Covering Location Problem (MCLP)</strong> using Gurobi optimization. This mathematically selected site locations that covered the highest number of predicted overdose events under budget constraints.</li>
+                    <li><strong>patient_info:</strong> Stores static demographics (Age, Gender, Weight Availability).</li>
+                    <li><strong>visit_data:</strong> Captures dynamic utilization metrics (Inpatient visits, Lab procedures, Time in hospital).</li>
+                    <li><strong>predictions:</strong> Logs every model inference with a timestamp and probability score for auditability.</li>
+                    <li><strong>users:</strong> Manages secure authentication for clinicians.</li>
                 </ul>
             </div>
         </div>
 
         <div class="section">
             <div class="text-col">
-                <h2>Impact</h2>
-                <p>The optimized model demonstrated a potential to increase network service coverage by <strong>10 percentage points</strong> compared to current ad-hoc placement strategies. This corresponds to covering an additional <strong>50 forecasted deaths</strong> per year, providing a robust, data-driven argument for policy changes.</p>
+                <h2>Machine Learning Methodology</h2>
+                <p>
+                    Using the "Diabetes 130-US Hospitals" dataset (1999-2008), we developed a predictive model to classify patients as "High Risk" (<30 days readmission) or "Low Risk".
+                </p>
+                <h3>Data Preprocessing & Feature Engineering</h3>
+                <ul>
+                    <li><strong>Exclusion Criteria:</strong> Removed records associated with patient expiration (death) to focus on preventable readmissions.</li>
+                    <li><strong>Imputation:</strong> Handled missing values for 'race', 'payer_code', and 'medical_specialty' using domain-aware imputation strategies.</li>
+                    <li><strong>Encoding:</strong> Applied One-Hot Encoding to categorical variables and mapped age intervals to numerical representatives.</li>
+                </ul>
+                <h3>Model Selection & Performance</h3>
+                <p>We rigorously evaluated three algorithms: Logistic Regression, Random Forest, and Gradient Boosting.</p>
+                <table>
+                    <tr>
+                        <th>Model</th>
+                        <th>Validation AUC</th>
+                        <th>Key Observation</th>
+                    </tr>
+                    <tr>
+                        <td>Logistic Regression</td>
+                        <td>0.660</td>
+                        <td>Baseline performance, limited non-linearity.</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.658</td>
+                        <td>Suffered from overfitting on complex interactions.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gradient Boosting</strong></td>
+                        <td><strong>0.694</strong></td>
+                        <td><strong>Selected Model.</strong> Superior generalization and feature importance interpretability.</td>
+                    </tr>
+                </table>
             </div>
-            <div class="img-col"><img src="https://placehold.co/500x350/fce4ec/ec407a?text=Optimization+Results" class="img-placeholder"></div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/ec407a/white?text=Feature+Importance+Plot" class="img-placeholder">
+                <div class="caption">Figure 3: Key predictors included Number of Inpatient Visits and Discharge Disposition.</div>
+            </div>
         </div>
+
+        <div class="section">
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/37474f/white?text=Streamlit+Prediction+Interface" class="img-placeholder">
+                <div class="caption">Figure 4: The 'Prediction Tab' allows clinicians to input data and get real-time risk scores.</div>
+            </div>
+            <div class="text-col">
+                <h2>Interface Design (Streamlit)</h2>
+                <p>
+                    The frontend was built using <strong>Streamlit</strong> to ensure a lightweight, low-latency experience for busy clinicians. The design prioritizes "Actionable Intelligence" over raw data.
+                </p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Real-Time Prediction:</strong> Clinicians input 12 key features (e.g., meds, lab counts) and receive an instant Readmission Probability Score.</li>
+                    <li><strong>Patient Lookup:</strong> Retrieval of historical patient profiles to track risk progression over multiple visits.</li>
+                    <li><strong>Analytics Dashboard:</strong> Aggregate-level visualizations (Histograms, Heatmaps) to help hospital administrators identify systemic trends in the patient population.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="results">
+            <div class="text-col">
+                <h2>Sensitivity Analysis & Strategic Impact</h2>
+                <p>
+                    To validate the model's robustness, we conducted a "What-If" sensitivity analysis. We simulated variations in hospital utilization to observe the model's response.
+                </p>
+                <div class="highlight-box">
+                    "Patient 1303, with the highest utilization (8 inpatient, 10 emergency visits), had a <strong>57.49%</strong> readmission probability, crossing the high-risk threshold."
+                </div>
+                <h3>Key Findings</h3>
+                <ul>
+                    <li><strong>Length of Stay Impact:</strong> Sensitivity analysis indicated an increase in readmission probability of <strong>~2.1%</strong> for every day decrease in length of stay (premature discharge risk).</li>
+                    <li><strong>Utilization:</strong> Prior inpatient and emergency visits were the strongest predictors of future risk.</li>
+                    <li><strong>Demographics:</strong> Younger age groups (20-30) showed unexpectedly higher readmission rates compared to the mean.</li>
+                </ul>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Sensitivity+Analysis+Chart" class="img-placeholder">
+                <div class="caption">Figure 5: Impact of Hospital Utilization on Predicted Risk Probability.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/37474f/white?text=PEIT+Framework+Diagram" class="img-placeholder">
+                <div class="caption">Figure 6: People, Environment, Information, Technology (PEIT) Implementation Plan.</div>
+            </div>
+            <div class="text-col">
+                <h2>Implementation & Policy (PEIT Framework)</h2>
+                <p>
+                    Deploying AI in healthcare requires more than just code. We developed a comprehensive <strong>PEIT (People, Environment, Information, Technology)</strong> implementation strategy.
+                </p>
+                <ul>
+                    <li><strong>People:</strong> Addressed "Alert Fatigue" by calibrating thresholds to ensure only truly high-risk patients trigger notifications.</li>
+                    <li><strong>Process:</strong> Defined clear SLAs for data ingestion and model inference to fit within the hospital discharge workflow.</li>
+                    <li><strong>Policy (HIPAA):</strong> Implemented role-based access control (RBAC) and data encryption to ensure full compliance with patient privacy regulations.</li>
+                    <li><strong>Technology:</strong> Proposed a containerized deployment (Docker/Kubernetes) for scalability across hospital networks.</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
+
+    <div class="footer">
+        <h2>Ready to see more?</h2>
+        <p>Explore my other projects or get in touch.</p>
+        <a href="index.html" class="btn-back">Back to Portfolio</a>
+    </div>
+
 </body>
 </html>
