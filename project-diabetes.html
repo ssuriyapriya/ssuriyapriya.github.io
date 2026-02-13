@@ -2,187 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Readmission Risk Assessment | Suriyapriya S.</title>
-    
+    <title>Opioid Crisis Intervention | Suriyapriya S.</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #37474f;
-            background-color: #fafafa;
-        }
-
-        /* --- HEADER --- */
-        .project-header {
-            background-color: #ec407a; /* Rose Pink */
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .project-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0;
-        }
-        .project-subtitle {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-
-        /* --- NAVIGATION --- */
-        .nav-bar {
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            text-align: right;
-        }
-        .nav-bar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .nav-bar a:hover { color: #ec407a; }
-
-        /* --- CONTENT CONTAINER --- */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding-bottom: 40px;
-        }
-
-        /* --- SECTIONS --- */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #ec407a;
-            margin-top: 40px;
-            border-bottom: 2px solid #fce4ec;
-            padding-bottom: 10px;
-        }
-        
-        .content-text {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #546e7a;
-            margin-top: 15px;
-        }
-
-        ul { margin-top: 10px; }
-        li {
-            margin-bottom: 10px;
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        /* --- TAGS --- */
-        .tag-container { margin-top: 20px; }
-        .tag {
-            display: inline-block;
-            background-color: #fce4ec;
-            color: #ec407a;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #888;
-            font-size: 0.9rem;
-        }
-        .btn-back {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 25px;
-            background-color: #37474f;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-        .btn-back:hover { background-color: #263238; }
+        /* Reuse styles from diabetes file, just paste the <style> block here */
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; color: #37474f; background-color: #fafafa; }
+        .header { background-color: #fce4ec; padding: 80px 20px; text-align: center; border-bottom: 5px solid #ec407a; }
+        .title { font-size: 2.8rem; font-weight: 900; color: #37474f; }
+        .subtitle { font-size: 1.2rem; color: #ec407a; font-weight: 600; text-transform: uppercase; margin-top: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { display: flex; flex-wrap: wrap; margin-bottom: 60px; align-items: center; }
+        .section:nth-child(even) { flex-direction: row-reverse; }
+        .text-col { flex: 1; padding: 30px; min-width: 300px; }
+        .img-col { flex: 1; padding: 20px; min-width: 300px; }
+        .img-placeholder { width: 100%; border-radius: 8px; }
+        h2 { color: #ec407a; font-size: 1.8rem; margin-bottom: 15px; font-weight: 800; }
+        p, li { font-size: 1.1rem; line-height: 1.8; color: #546e7a; margin-bottom: 10px; }
+        .back-btn { display: inline-block; padding: 10px 25px; background: #37474f; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; margin-bottom: 40px; }
     </style>
 </head>
 <body>
-
-    <div class="nav-bar">
-        <span style="float:left; font-weight:800; margin-left:20px;">Suriyapriya S.</span>
-        <a href="index.html">Home</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#contact">Contact</a>
+    <div class="header">
+        <h1 class="title">Opioid Crisis Intervention</h1>
+        <div class="subtitle">Predict-Then-Optimize Framework for Safe Consumption Sites</div>
     </div>
-
-    <div class="project-header">
-        <h1 class="project-title">Diabetes Readmission Risk Assessment System</h1>
-        <p class="project-subtitle">Decision Support System to Predict 30-Day Hospital Readmissions</p>
-    </div>
-
     <div class="container">
-        
-        <div class="tag-container">
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Python</span>
-            <span class="tag">Healthcare Analytics</span>
-            <span class="tag">XGBoost</span>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+
+        <div class="section">
+            <div class="text-col">
+                <h2>Project Overview</h2>
+                <p>The opioid crisis is a critical public health challenge in Allegheny County. This project aimed to scientifically determine the optimal locations for new Safe Consumption Sites (SCS) to maximize life-saving coverage. We utilized a "Predict-Then-Optimize" framework to forecast future overdose events and place resources where they are needed most.</p>
+            </div>
+            <div class="img-col"><img src="https://placehold.co/500x350/ec407a/white?text=Allegheny+Map" class="img-placeholder"></div>
         </div>
 
-        <div class="section-title">Project Overview</div>
-        <p class="content-text">
-            Hospital readmissions for diabetic patients are a major cost driver and quality indicator for healthcare systems. 
-            This project focused on developing a <strong>Clinical Decision Support System (CDSS)</strong> to predict the likelihood of a patient being readmitted within 30 days of discharge.
-        </p>
-
-        <div class="section-title">Key Methodologies</div>
-        <div class="content-text">
-            <ul>
-                <li><strong>Data Preprocessing:</strong> Handled class imbalance using <strong>SMOTEENN</strong> (combining oversampling and undersampling) and imputed missing clinical values.</li>
-                <li><strong>Feature Engineering:</strong> Created new features capturing temporal patterns and comorbidity interactions to improve model sensitivity.</li>
-                <li><strong>Modeling:</strong> Trained a <strong>Gradient Boosting (XGBoost)</strong> model which outperformed Logistic Regression and Random Forest.</li>
-            </ul>
+        <div class="section" style="background-color: white; border-radius: 12px; padding: 20px;">
+            <div class="img-col"><img src="https://placehold.co/500x350/37474f/white?text=ARIMA+Forecast" class="img-placeholder"></div>
+            <div class="text-col">
+                <h2>Methodology</h2>
+                <ul>
+                    <li><strong>Prediction:</strong> Developed <strong>106 individual ARIMA time-series models</strong>, one for every ZIP code in the county, to accurately forecast fatal overdose events.</li>
+                    <li><strong>Optimization:</strong> Formulated a <strong>Maximal Covering Location Problem (MCLP)</strong> using Gurobi optimization. This mathematically selected site locations that covered the highest number of predicted overdose events under budget constraints.</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="section-title">Results & Impact</div>
-        <div class="content-text">
-            <ul>
-                <li>Achieved a predictive accuracy of <strong>94.7%</strong>.</li>
-                <li>Identified key predictors of readmission through sensitivity analysis, providing actionable insights for care management protocols.</li>
-                <li>Demonstrated that a 1-day reduction in hospital stay was associated with a <strong>2.1% increase</strong> in readmission risk for high-risk cohorts.</li>
-            </ul>
+        <div class="section">
+            <div class="text-col">
+                <h2>Impact</h2>
+                <p>The optimized model demonstrated a potential to increase network service coverage by <strong>10 percentage points</strong> compared to current ad-hoc placement strategies. This corresponds to covering an additional <strong>50 forecasted deaths</strong> per year, providing a robust, data-driven argument for policy changes.</p>
+            </div>
+            <div class="img-col"><img src="https://placehold.co/500x350/fce4ec/ec407a?text=Optimization+Results" class="img-placeholder"></div>
         </div>
-
-        <div class="section-title">Visualizations</div>
-        <p class="content-text">
-            <em>(Add screenshots of your ROC curves, Confusion Matrix, or Dashboard here)</em>
-        </p>
-        <img src="https://placehold.co/800x400/eee/999?text=ROC+Curve+Visualization" style="width:100%; border-radius:8px; margin-top:10px;">
-
-        <center>
-            <a href="index.html#projects" class="btn-back">← Back to Portfolio</a>
-        </center>
     </div>
-
-    <div class="footer">
-        © 2026 Suriyapriya Selvanathan
-    </div>
-
 </body>
 </html>
