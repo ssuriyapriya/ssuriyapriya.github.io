@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NLP Text Summarizer | Suriyapriya S.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reuse styles from diabetes file */
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; color: #37474f; background-color: #fafafa; }
+        .header { background-color: #fce4ec; padding: 80px 20px; text-align: center; border-bottom: 5px solid #ec407a; }
+        .title { font-size: 2.8rem; font-weight: 900; color: #37474f; }
+        .subtitle { font-size: 1.2rem; color: #ec407a; font-weight: 600; text-transform: uppercase; margin-top: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { display: flex; flex-wrap: wrap; margin-bottom: 60px; align-items: center; }
+        .section:nth-child(even) { flex-direction: row-reverse; }
+        .text-col { flex: 1; padding: 30px; min-width: 300px; }
+        .img-col { flex: 1; padding: 20px; min-width: 300px; }
+        .img-placeholder { width: 100%; border-radius: 8px; }
+        h2 { color: #ec407a; font-size: 1.8rem; margin-bottom: 15px; font-weight: 800; }
+        p, li { font-size: 1.1rem; line-height: 1.8; color: #546e7a; margin-bottom: 10px; }
+        .back-btn { display: inline-block; padding: 10px 25px; background: #37474f; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">NLP Based Text Summarizer</h1>
+        <div class="subtitle">Extracting Clinical Insights from Medical Reports</div>
+    </div>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+
+        <div class="section">
+            <div class="text-col">
+                <h2>Project Overview</h2>
+                <p>Medical reports contain vast amounts of unstructured text that are time-consuming for clinicians to review. This project developed an NLP system to automatically generate concise summaries of medical reports, retaining critical clinical entities like diagnosis and treatment plans.</p>
+            </div>
+            <div class="img-col"><img src="https://placehold.co/500x350/ec407a/white?text=NLP+Pipeline" class="img-placeholder"></div>
+        </div>
+
+        <div class="section" style="background-color: white; border-radius: 12px; padding: 20px;">
+            <div class="img-col"><img src="https://placehold.co/500x350/37474f/white?text=Architecture" class="img-placeholder"></div>
+            <div class="text-col">
+                <h2>Key Methodology</h2>
+                <ul>
+                    <li><strong>Architecture:</strong> Utilized Bidirectional LSTM (Bi-LSTM) networks with Attention mechanisms to handle the sequential nature of clinical text.</li>
+                    <li><strong>Preprocessing:</strong> Implemented extensive text cleaning, tokenization, and stop-word removal specific to medical ontology.</li>
+                    <li><strong>Evaluation:</strong> Assessed model performance using ROUGE scores to ensure summaries accurately reflected the source text.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
