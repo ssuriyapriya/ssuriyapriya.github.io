@@ -24,8 +24,7 @@
     /* --- TYPOGRAPHY --- */
     h1, h2, h3, h4, h5 { font-weight: 800; letter-spacing: -0.5px; color: var(--text-slate); margin-top: 0; }
     .page-title { color: var(--text-slate); font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; border-bottom: 4px solid var(--primary-rose); padding-bottom: 10px; }
-    .teal { background-color: transparent !important; } .white-text { color: var(--text-slate) !important; }
-
+    
     /* --- INTRO & SECTIONS --- */
     #intro { padding: 100px 0; min-height: 100vh; display: flex; align-items: center; }
     .intro-name { color: var(--primary-rose); font-size: 4rem; font-weight: 900; }
@@ -49,7 +48,6 @@
     .btn-fill:hover { background-color: #d81b60; color: white; transform: translateY(-2px); }
     .btn-outline { background-color: transparent; color: var(--primary-rose); border: 2px solid var(--primary-rose); }
     .btn-outline:hover { background-color: var(--primary-rose); color: white; transform: translateY(-2px); }
-    
     .btn-case-study { background-color: transparent; color: var(--primary-rose); border: 2px solid var(--primary-rose); border-radius: 4px; padding: 8px 15px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; width: 100%; text-align: center; margin-top: 15px; display: block; transition: 0.3s; }
     .btn-case-study:hover { background-color: var(--primary-rose); color: white; }
 
@@ -175,47 +173,88 @@
   <script>
     $(document).ready(function(){$('.button-collapse').sideNav({menuWidth: 260, edge: 'left', closeOnClick: true, draggable: true}); $('.scrollspy').scrollSpy({scrollOffset: 60});});
 
-    // --- AI CHATBOT LOGIC ---
+    // --- ADVANCED AI KNOWLEDGE BASE ---
+    // Now supports multiple answers per category for variety
     const knowledgeBase = [
       {
-        keywords: ["hire", "fit", "why", "advantage", "candidate", "good choice", "value", "stand out", "best person"],
-        answer: "Suriyapriya bridges the gap between clinical reality and technical possibility. With a background in Biomedical Engineering and a Master's in Healthcare Analytics (CMU), she understands both the 'Doctor's language' and the 'Data Scientist's code'. She has proven industry experience at Highmark Health and Latent View Analytics deploying real-world models."
+        keywords: ["hire", "fit", "why", "advantage", "candidate", "good choice", "value", "stand out", "best person", "recruit"],
+        answers: [
+          "Suriyapriya bridges the critical gap between clinical reality and technical possibility. With a background in Biomedical Engineering and a Master's from CMU, she speaks both 'Doctor' and 'Data Scientist' fluently.",
+          "She is an immediate value-add. She has already deployed real-world models at Highmark Health and Latent View Analytics, proving she can move from theory to production quickly.",
+          "You should hire her because she doesn't just analyze data; she understands the patient behind it. Her work at AHN and Safety21 shows she can handle complex, messy real-world data."
+        ]
       },
       {
-        keywords: ["skills", "stack", "tools", "technologies", "languages", "python", "sql", "tableau", "aws"],
-        answer: "Her technical arsenal includes Python, SQL, R, and Tableau. She is experienced with Deep Learning (TensorFlow), AWS cloud infrastructure, and statistical modeling. She specializes in handling large-scale EHR data and building predictive models."
+        keywords: ["skill", "skills", "stack", "tool", "tools", "technology", "technologies", "language", "languages", "python", "sql", "tableau", "aws", "coding", "code"],
+        answers: [
+          "Her technical arsenal is built for healthcare data: Python, SQL, R, and Tableau are her daily drivers. She also leverages AWS and TensorFlow for deep learning tasks.",
+          "She is proficient in full-stack data science: from querying huge datasets in SQL to building predictive models in Python and visualizing the results in Tableau.",
+          "Beyond just coding, she specializes in statistical modeling, time-series analysis (ARIMA), and deploying machine learning pipelines in cloud environments."
+        ]
       },
       {
-        keywords: ["experience", "work", "job", "career", "history", "background", "intern", "latent", "highmark", "ahn"],
-        answer: "She currently leads a Capstone Data team at Highmark Health. Previously, she was a Data Science Intern at Allegheny Health Network (AHN) creating clinical decision support systems, and a Data Analyst at Latent View Analytics in India, where she optimized patient risk models."
+        keywords: ["experience", "work", "job", "career", "history", "background", "intern", "internship", "latent", "highmark", "ahn", "role", "roles"],
+        answers: [
+          "She is currently leading a Capstone Data team at Highmark Health. Before that, she built clinical decision support systems at Allegheny Health Network (AHN) and worked as a Data Analyst at Latent View Analytics.",
+          "Her experience spans across the globe. She started as a Data Analyst at Latent View in India and is now a Researcher and Fellow at Carnegie Mellon University and Safety21 in the US.",
+          "She has a mix of corporate and research experience, ranging from optimizing patient risk models at Latent View to leading federal transportation research at Safety21."
+        ]
       },
       {
-        keywords: ["education", "degree", "university", "college", "cmu", "carnegie", "master", "undergrad", "study"],
-        answer: "She is a Master's student at Carnegie Mellon University (Heinz College) studying Health Care Analytics & IT (Class of 2026). She holds a Bachelor of Engineering in Biomedical Engineering from PSG College of Technology."
+        keywords: ["education", "degree", "university", "college", "cmu", "carnegie", "master", "masters", "undergrad", "bachelor", "study", "studies", "grad"],
+        answers: [
+          "She is a Master's student at Carnegie Mellon University's Heinz College, studying Health Care Analytics & IT (Class of 2026).",
+          "She holds a Bachelor of Engineering in Biomedical Engineering from PSG College of Technology (2023) and is currently pursuing her MS at CMU.",
+          "Her academic background is a perfect blend of medicine and math: Biomedical Engineering followed by a specialized Master's in Healthcare Analytics."
+        ]
       },
       {
-        keywords: ["projects", "portfolio", "case study", "diabetes", "opioid", "nlp", "botswana", "game"],
-        answer: "Her key projects include a Diabetes Risk Assessment model (94.7% accuracy), an Opioid Crisis optimization framework using Gurobi, and a Multimodal NLP system for clinical notes. She also analyzed telemetry data for a gamified nutrition project in Botswana."
+        keywords: ["project", "projects", "portfolio", "case study", "diabetes", "opioid", "nlp", "botswana", "game", "model", "models"],
+        answers: [
+          "Her portfolio features high-impact work: a Diabetes Risk Assessment model with 94.7% accuracy and an Opioid Crisis optimization framework using Gurobi.",
+          "She recently built a Multimodal NLP system (ViT + BERT) to analyze clinical notes and has worked on gamified nutrition interventions for pediatric health in Botswana.",
+          "One of her standout projects is a Patient Length of Stay predictor using XGBoost, which helps hospitals optimize bed allocation and discharge planning."
+        ]
       },
       {
-        keywords: ["leadership", "lead", "management", "fellow", "responsibility", "initiative", "team"],
-        answer: "Suriyapriya is a Transportation Fellow at Safety21 (US DOT), leading research dissemination. She also served as a Graduate Teaching Assistant at CMU and was selected as an official Influencer for the HLTH 2025 conference in Las Vegas."
+        keywords: ["leadership", "lead", "management", "fellow", "responsibility", "initiative", "team", "leader"],
+        answers: [
+          "Suriyapriya is a natural leader. She was selected as a Transportation Fellow at Safety21 (US DOT) and serves as an official Influencer for the HLTH 2025 conference.",
+          "She has demonstrated leadership by managing research teams at CMU and serving as a Graduate Teaching Assistant for Statistics.",
+          "She takes initiative. Whether leading a capstone team at Highmark or organizing national safety summits, she knows how to manage stakeholders and deliver results."
+        ]
       },
       {
-        keywords: ["soft skills", "communication", "personality", "responsible", "time", "work ethic", "collaborate", "good person"],
-        answer: "She is highly responsible and deadline-driven. Colleagues describe her as a 'translator' who can communicate complex data insights to non-technical stakeholders. Her time management is evidenced by balancing a full-time Master's, a Fellowship, and multiple research roles simultaneously."
+        keywords: ["soft skill", "soft skills", "communication", "person", "personality", "responsible", "time", "ethic", "collaborate", "good person", "character"],
+        answers: [
+          "She is known for being highly responsible and empathetic. Her colleagues value her ability to translate complex technical jargon into clear business insights.",
+          "Yes, she is a great team player! She balances a rigorous Master's program, a Fellowship, and internships, which speaks volumes about her time management and dedication.",
+          "She brings positive energy to any team. She is deadline-driven but also deeply cares about the societal impact of her work in healthcare."
+        ]
       },
       {
-        keywords: ["hobbies", "personal", "interest", "fun", "outside work", "free time"],
-        answer: "Outside of data science, Suriyapriya is passionate about photography and visual storytelling. She is also a food enthusiast who loves cooking (and missing!) authentic Tamil cuisine."
+        keywords: ["hobby", "hobbies", "personal", "interest", "interests", "fun", "outside work", "free time", "relax", "life"],
+        answers: [
+          "When she's not crunching data, Suriyapriya is a passionate photographer. She loves visual storytelling and capturing moments.",
+          "She is a big foodie! She loves cooking authentic Tamil cuisine (and admits to missing the food back home in India quite a bit!).",
+          "She enjoys travel and photography. She's also an official influencer for HLTH 2025, combining her professional interests with social media content creation."
+        ]
       },
       {
-        keywords: ["contact", "email", "reach", "touch", "phone", "call", "address"],
-        answer: "You can reach her directly at sselvana@andrew.cmu.edu or connect via LinkedIn using the links in the footer!"
+        keywords: ["contact", "email", "reach", "touch", "phone", "call", "address", "meet"],
+        answers: [
+          "You can reach her directly at sselvana@andrew.cmu.edu.",
+          "The best way to contact her is via email at sselvana@andrew.cmu.edu or by connecting on LinkedIn (link in the footer!).",
+          "She's always open to discussing new opportunities. Shoot her an email at sselvana@andrew.cmu.edu!"
+        ]
       }
     ];
 
-    const fallbackAnswer = "That's a great question. While I'm an AI focused on her technical profile, I think Suriyapriya herself answers that best. Please email her at sselvana@andrew.cmu.edu!";
+    const fallbackAnswers = [
+      "That's a great question. I'm focusing on her professional background, so I might not know that detail. You should ask her directly at sselvana@andrew.cmu.edu!",
+      "I'm not 100% sure about that one. But Suriyapriya would love to answer it herself—send her an email!",
+      "I'm an AI trained on her resume, so I might have missed that specific nuance. Please reach out to her on LinkedIn!"
+    ];
 
     function toggleChat() {
       const chatWindow = document.getElementById('chat-window');
@@ -236,10 +275,13 @@
       addMessage(text, 'user-msg');
       inputField.value = '';
 
+      // Simulate a slightly variable "thinking" time for realism
+      const delay = Math.floor(Math.random() * 500) + 500; 
+
       setTimeout(() => {
         const response = generateResponse(text);
         addMessage(response, 'bot-msg');
-      }, 600);
+      }, delay);
     }
 
     function addMessage(text, className) {
@@ -256,11 +298,13 @@
       let bestMatch = null;
       let highestScore = 0;
 
+      // Improved scoring: Matches words even if they are substrings
       knowledgeBase.forEach(item => {
         let score = 0;
         item.keywords.forEach(keyword => {
           if (lowerInput.includes(keyword)) score++;
         });
+        
         if (score > highestScore) {
           highestScore = score;
           bestMatch = item;
@@ -268,9 +312,13 @@
       });
 
       if (highestScore > 0 && bestMatch) {
-        return bestMatch.answer;
+        // RANDOMIZE RESPONSE: Pick one random answer from the array
+        const randomIndex = Math.floor(Math.random() * bestMatch.answers.length);
+        return bestMatch.answers[randomIndex];
       } else {
-        return fallbackAnswer;
+        // RANDOMIZE FALLBACK
+        const randomFallback = Math.floor(Math.random() * fallbackAnswers.length);
+        return fallbackAnswers[randomFallback];
       }
     }
   </script>
