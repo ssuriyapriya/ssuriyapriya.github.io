@@ -13,12 +13,28 @@
   <title>Suriyapriya Selvanathan | Healthcare Data Scientist</title>
 
   <style>
-    /* Professional Color Theme - Navy Blue */
-    .teal { background-color: #1a237e !important; } /* Indigo 900 */
-    .teal-text { color: #1a237e !important; }
-    .brown-text { color: #455a64 !important; } /* Blue Grey for text */
+    /* 1. Theme Colors: Pastel Pink & Charcoal */
+    /* Overriding the "Teal" class to be Pink/Rose */
+    .teal {
+        background-color: #f8bbd0 !important; /* Pastel Pink Backgrounds */
+        color: #4a4a4a !important; /* Dark text on pink backgrounds */
+    }
+    .teal-text {
+        color: #ec407a !important; /* Darker Rose for Text Links */
+    }
+    /* Making text dark grey instead of light brown */
+    .brown-text {
+        color: #212121 !important; 
+    }
     
-    /* Centering the Main Intro */
+    /* 2. Your Name - BOLD and Dark */
+    .caption h2 {
+        font-weight: 800 !important; /* Extra Bold */
+        color: #333 !important; /* Dark Grey */
+        text-transform: none !important;
+    }
+    
+    /* 3. Centering the Intro */
     #intro .container {
       display: flex;
       flex-direction: column;
@@ -27,26 +43,46 @@
       text-align: center;
       height: 100%;
     }
-    #intro .col-md-9 {
-        width: 100%;
-        margin: 0 !important;
+    #intro .col-md-9 { width: 100%; margin: 0 !important; }
+    
+    /* 4. Buttons - Pink with Dark Text */
+    .btn-floating {
+        background-color: #ec407a !important; /* Darker pink for buttons */
+    }
+    .btn-floating:hover {
+        background-color: #d81b60 !important;
     }
     
-    /* Skill Icons Sizing */
+    /* 5. Skill Icons */
     .skill-icon {
         height: 60px;
         width: 60px;
         margin-bottom: 10px;
     }
-    
-    /* Footer Style */
+
+    /* 6. Footer - Darker Rose */
     footer {
-        background-color: #1a237e;
+        background-color: #ad1457; /* Deep Pink/Red */
         color: white;
         padding: 20px 0;
         text-align: center;
     }
-    footer a { color: #ffab40; } /* Accent color for links */
+    footer a { color: #ffcdd2; font-weight: bold; }
+
+    /* Fix for Intro Background Overlay */
+    /* Making the background lighter so text pops */
+    .overlay {
+        background-color: rgba(255, 255, 255, 0.85) !important; 
+    }
+    
+    /* Navbar override */
+    nav {
+        background-color: white !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    nav ul a {
+        color: #333 !important;
+    }
   </style>
 </head>
 
@@ -60,25 +96,6 @@
           <img src="/assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar">
         </a>
       </li>
-      <li class="bold"><a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
-      <li class="bold"><a aria-label="Navigate to the Experience section" href="#experience" class="waves-effect waves-dark teal-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
-      <li class="bold"><a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i class="mdi-av-my-library-books small"></i><span>Projects</span></a></li>
-      <li class="bold"><a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i class="mdi-action-assessment small"></i><span>Skills</span></a></li>
-      <li class="bold"><a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
-      <li class="bold"><a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-      <li class="bold"><a aria-label="Open Resume" href="#" target="_blank" class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a></li>
-    </ul>
-  </nav>
-
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Suriyapriya Selvanathan</a><span class="black-text">Healthcare Data Scientist</span>
-    </div>
-  </nav>
-
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
       <li class="bold"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
       <li class="bold"><a href="#experience" class="waves-effect waves-dark teal-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
       <li class="bold"><a href="#projects" class="waves-effect waves-dark teal-text"><i class="mdi-av-my-library-books small"></i><span>Projects</span></a></li>
@@ -89,15 +106,37 @@
     </ul>
   </nav>
 
+  <nav class="hide-on-large only trigger z-depth-1">
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu" style="color: #333;"></i></a>
+    <div class="name-title">
+      <a id="name" href="#" class="teal-text">Suriyapriya Selvanathan</a>
+    </div>
+  </nav>
+
+  <nav class="hide-on-large only">
+    <ul id="slide-out" class="side-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <main>
     <section id="intro" class="section scrollspy full-height">
       <div class="overlay"></div>
       <div class="container">
         <div class="col-md-9">
           <div class="caption">
-            <h2>Hi, I'm <span class="teal-text">Suriyapriya Selvanathan.</span></h2>
-            <h5 style="color:#333">A <span class="typing" style="font-weight: 300; color:#1a237e"></span></h5>
-            <h5 style="color:#555; max-width: 800px; margin: 0 auto;">Passionate about bridging the gap between healthcare and technology through data analytics.</h5>
+            <h2>Hi, I'm <span style="color: #ec407a;">Suriyapriya Selvanathan.</span></h2>
+            
+            <h5 style="color:#444; font-weight: 600;">A <span class="typing" style="font-weight: 600; color: #ad1457;"></span></h5>
+            
+            <h5 style="color:#555; max-width: 800px; margin: 20px auto; line-height: 1.6;">
+                Passionate about bridging the gap between healthcare and technology through data analytics.
+            </h5>
           </div>
           <div class="social">
             <a href="http://linkedin.com/in/suriyapriya-s" target="_blank">
@@ -108,8 +147,8 @@
             </a>
           </div>
           <div class='buttons'>
-            <a href="#about" class="readme">Read More</a>
-            <a href="#contact" class="contactme">Contact Me</a>
+            <a href="#about" class="readme" style="color:#ec407a; border: 2px solid #ec407a; font-weight: bold;">Read More</a>
+            <a href="#contact" class="contactme" style="background-color:#ec407a; color:white; font-weight: bold;">Contact Me</a>
           </div>
         </div>
       </div>
@@ -130,7 +169,6 @@
     <section id="experience" class="section scrollspy">
       <h3 class="page-title white-text teal">Experience</h3>
       <div class="container">
-
         <div class="card">
           <div class="card-content">
             <div class="row">
@@ -145,7 +183,6 @@
             <ul>
               <li>Leading a cross-functional team to model longitudinal cancer cost trajectories.</li>
               <li>Developing a resource allocation framework by synthesizing administrative claims data.</li>
-              <li>Facilitating weekly stakeholder briefings to align model outputs with strategic goals.</li>
             </ul>
           </div>
           <div class="card-action"><span>Jan 2026 - Present | Pittsburgh, PA</span></div>
@@ -169,25 +206,26 @@
           </div>
           <div class="card-action"><span>May 2025 - Present | Pittsburgh, PA</span></div>
         </div>
-
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <img alt="LatentView logo" src="/assets/img/latentview-logo.png" class="responsive-img center-block" />
+        
+         <div class="card">
+            <div class="card-content">
+              <div class="row">
+                <div class="col s12 m2">
+                  <img alt="LatentView logo" src="/assets/img/latentview-logo.png" class="responsive-img center-block" />
+                </div>
+                <div class="col s12 m10">
+                  <p><span class="card-title"><a href="#" class="teal-text hoverline">Latent View Analytics</a></span></p>
+                </div>
               </div>
-              <div class="col s12 m10">
-                <p><span class="card-title"><a href="#" class="teal-text hoverline">Latent View Analytics</a></span></p>
-              </div>
+              <div class="role brown-text text-darken-2">Data Scientist</div>
+              <ul>
+                <li>Analyzed 2M+ patient records to identify predictors of disease progression.</li>
+                <li>Deployed ML models improving high-risk candidate targeting by 25%.</li>
+              </ul>
             </div>
-            <div class="role brown-text text-darken-2">Data Scientist</div>
-            <ul>
-              <li>Analyzed 2M+ patient records to identify predictors of disease progression.</li>
-              <li>Deployed ML models improving high-risk candidate targeting by 25%.</li>
-            </ul>
+            <div class="card-action"><span>Jun 2023 - Jul 2024 | India</span></div>
           </div>
-          <div class="card-action"><span>Jun 2023 - Jul 2024 | India</span></div>
-        </div>
+
       </div>
     </section>
 
@@ -213,6 +251,7 @@
               </div>
             </div>
           </div>
+          
           <div class="col s12 m6 l6">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
@@ -284,7 +323,7 @@
                   <br>NumPy
                 </div>
                 <div class="col s4 m2">
-                    <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" class="skill-icon" alt="Tableau"/>
+                  <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" class="skill-icon" alt="Tableau"/>
                   <br>Tableau
                 </div>
                 <div class="col s4 m2">
@@ -302,7 +341,6 @@
               </div>
             </div>
           </div>
-
       </div>
     </section>
 
@@ -316,9 +354,6 @@
                 <p><span class="card-title"><a href="https://www.cmu.edu/" class="teal-text hoverline">Carnegie Mellon University</a></span></p>
                 <p class="brown-text">Pittsburgh, PA | May 2026</p>
                 <p><b>MS in Health Care Analytics & IT</b></p>
-                <ul>
-                    <li>Coursework: Decision & Risk Modeling, Health Economics, Organizational Design, Responsible AI.</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -328,9 +363,6 @@
                 <p><span class="card-title"><a href="#" class="teal-text hoverline">PSG College of Technology</a></span></p>
                 <p class="brown-text">Coimbatore, India | Apr 2023</p>
                 <p><b>BE in Biomedical Engineering</b></p>
-                <ul>
-                    <li>Coursework: AI, ML & Data Science, Statistics, Digital Signal Processing.</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -342,24 +374,16 @@
       <h3 class="page-title white-text teal">Contact</h3>
       <div class="container">
         <p>
-          <a aria-label="Email Suriyapriya" href="mailto:sselvana@andrew.cmu.edu" target="_blank" data-position="top"
-            data-tooltip="Email Suriyapriya" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-envelope"></i><a aria-label="Email Suriyapriya" href="mailto:sselvana@andrew.cmu.edu"
-              class="hoverline">sselvana@andrew.cmu.edu</a></a>
+          <a href="mailto:sselvana@andrew.cmu.edu" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-envelope"></i></a>
+          <a href="mailto:sselvana@andrew.cmu.edu" class="hoverline" style="color: #333; font-weight: bold; margin-left: 10px;">sselvana@andrew.cmu.edu</a>
         </p>
         <p>
-          <a aria-label="View on GitHub" href="https://github.com/ssuriyapriya" target="_blank"
-            data-position="top" data-tooltip="View on GitHub"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i><a
-              aria-label="Suriyapriya on Github" href="https://github.com/ssuriyapriya" class="hoverline"
-              target="_blank">github.com/ssuriyapriya</a></a>
+          <a href="https://github.com/ssuriyapriya" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i></a>
+          <a href="https://github.com/ssuriyapriya" class="hoverline" style="color: #333; font-weight: bold; margin-left: 10px;">github.com/ssuriyapriya</a>
         </p>
         <p>
-          <a aria-label="View on LinkedIn" href="https://linkedin.com/in/suriyapriya-s" target="_blank"
-            data-position="top" data-tooltip="View on LinkedIn"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-linkedin"></i><a
-              aria-label="Suriyapriya on LinkedIn" href="https://linkedin.com/in/suriyapriya-s" class="hoverline"
-              target="_blank">linkedin.com/in/suriyapriya-s</a></a>
+          <a href="https://linkedin.com/in/suriyapriya-s" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-linkedin"></i></a>
+          <a href="https://linkedin.com/in/suriyapriya-s" class="hoverline" style="color: #333; font-weight: bold; margin-left: 10px;">linkedin.com/in/suriyapriya-s</a>
         </p>
       </div>
     </section>
@@ -367,7 +391,7 @@
 
   <footer>
     <div class="container">
-        <p>© 2026 Personal Portfolio | Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">Suriyapriya Selvanathan</a></p>
+        <p>© 2026 Suriyapriya Selvanathan | Made with <i class="fa fa-heart" aria-hidden="true"></i></p>
         <div style="font-size: 1.5rem;">
             <a href="https://linkedin.com/in/suriyapriya-s" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp;
             <a href="https://github.com/ssuriyapriya" target="_blank"><i class="fa fa-github"></i></a>
