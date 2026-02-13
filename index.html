@@ -253,5 +253,240 @@
       messages.scrollTop = messages.scrollHeight;
     }
   </script>
+  <style>
+  /* Floating Chat Button */
+  #chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-rose);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(236, 64, 122, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s;
+    font-family: 'Montserrat', sans-serif;
+  }
+  #chat-btn:hover { transform: scale(1.05); background-color: #d81b60; }
+
+  /* Chat Window */
+  #chat-window {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+    z-index: 1001;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Chat Header */
+  .chat-header {
+    background: var(--primary-rose);
+    color: white;
+    padding: 15px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .close-chat { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+
+  /* Chat Body */
+  #chat-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Messages */
+  .bot-msg, .user-msg {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .bot-msg {
+    background: #e0e0e0;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+  }
+  .user-msg {
+    background: var(--primary-rose);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+
+  /* Input Area */
+  .chat-input-area {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background: white;
+    display: flex;
+  }
+  #user-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
+    outline: none;
+    font-family: inherit;
+  }
+  #send-btn {
+    background: white;
+    border: none;
+    color: var(--primary-rose);
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+</style>
+
+<button id="chat-btn" onclick="toggleChat()">
+  <i class="fa fa-comments"></i> Ask AI about Suriyapriya
+</button>
+
+<div id="chat-window">
+  <div class="chat-header">
+    <span>Virtual Assistant</span>
+    <button class="close-chat" onclick="toggleChat()">×</button>
+  </div>
+  <div id="chat-body">
+    <div class="bot-msg">Hi! I'm an AI assistant trained on Suriyapriya's portfolio. Ask me anything! e.g., "Why should I hire her?" or "What are her skills?"</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="user-input" placeholder="Type a question..." onkeypress="handleKeyPress(event)">
+    <button id="send-btn" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+  // --- KNOWLEDGE BASE (THE "BRAIN") ---
+  const knowledgeBase = [
+    {
+      keywords: ["hire", "fit", "why", "advantage", "candidate", "good choice", "value", "stand out"],
+      answer: "Suriyapriya bridges the gap between clinical reality and technical possibility. With a background in Biomedical Engineering and a Master's in Healthcare Analytics (CMU), she understands both the 'Doctor's language' and the 'Data Scientist's code'. She has proven industry experience at Highmark Health and Latent View Analytics deploying real-world models."
+    },
+    {
+      keywords: ["skills", "stack", "tools", "technologies", "languages", "python", "sql", "tableau", "aws"],
+      answer: "Her technical arsenal includes Python, SQL, R, and Tableau. She is experienced with Deep Learning (TensorFlow), AWS cloud infrastructure, and statistical modeling. She specializes in handling large-scale EHR data and building predictive models."
+    },
+    {
+      keywords: ["experience", "work", "job", "career", "history", "background", "intern", "latent", "highmark", "ahn"],
+      answer: "She currently leads a Capstone Data team at Highmark Health. Previously, she was a Data Science Intern at Allegheny Health Network (AHN) creating clinical decision support systems, and a Data Analyst at Latent View Analytics in India, where she optimized patient risk models."
+    },
+    {
+      keywords: ["education", "degree", "university", "college", "cmu", "carnegie", "master", "undergrad", "study"],
+      answer: "She is a Master's student at Carnegie Mellon University (Heinz College) studying Health Care Analytics & IT (Class of 2026). She holds a Bachelor of Engineering in Biomedical Engineering from PSG College of Technology."
+    },
+    {
+      keywords: ["projects", "portfolio", "case study", "diabetes", "opioid", "nlp", "botswana", "game"],
+      answer: "Her key projects include a Diabetes Risk Assessment model (94.7% accuracy), an Opioid Crisis optimization framework using Gurobi, and a Multimodal NLP system for clinical notes. She also analyzed telemetry data for a gamified nutrition project in Botswana."
+    },
+    {
+      keywords: ["leadership", "lead", "management", "fellow", "responsibility", "initiative", "team"],
+      answer: "Suriyapriya is a Transportation Fellow at Safety21 (US DOT), leading research dissemination. She also served as a Graduate Teaching Assistant at CMU and was selected as an official Influencer for the HLTH 2025 conference in Las Vegas."
+    },
+    {
+      keywords: ["soft skills", "communication", "personality", "responsible", "time", "work ethic", "collaborate"],
+      answer: "She is highly responsible and deadline-driven. Colleagues describe her as a 'translator' who can communicate complex data insights to non-technical stakeholders. Her time management is evidenced by balancing a full-time Master's, a Fellowship, and multiple research roles simultaneously."
+    },
+    {
+      keywords: ["hobbies", "personal", "interest", "fun", "outside work", "free time"],
+      answer: "Outside of data science, Suriyapriya is passionate about photography and visual storytelling. She is also a food enthusiast who loves cooking (and missing!) authentic Tamil cuisine."
+    },
+    {
+      keywords: ["contact", "email", "reach", "touch", "phone", "call", "address"],
+      answer: "You can reach her directly at sselvana@andrew.cmu.edu or connect via LinkedIn using the links in the footer!"
+    }
+  ];
+
+  const fallbackAnswer = "That's a great question. While I'm an AI focused on her technical profile, I think Suriyapriya herself answers that best. Please email her at sselvana@andrew.cmu.edu!";
+
+  // --- LOGIC ENGINE ---
+  function toggleChat() {
+    const chatWindow = document.getElementById('chat-window');
+    chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    if(chatWindow.style.display === 'flex') document.getElementById('user-input').focus();
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') sendMessage();
+  }
+
+  function sendMessage() {
+    const inputField = document.getElementById('user-input');
+    const text = inputField.value.trim();
+    if (!text) return;
+
+    // Add User Message
+    addMessage(text, 'user-msg');
+    inputField.value = '';
+
+    // Simulate "Thinking" delay
+    setTimeout(() => {
+      const response = generateResponse(text);
+      addMessage(response, 'bot-msg');
+    }, 600);
+  }
+
+  function addMessage(text, className) {
+    const chatBody = document.getElementById('chat-body');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = className;
+    msgDiv.innerText = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight; // Auto scroll to bottom
+  }
+
+  function generateResponse(input) {
+    const lowerInput = input.toLowerCase();
+    
+    // Simple Keyword Scoring System
+    let bestMatch = null;
+    let highestScore = 0;
+
+    knowledgeBase.forEach(item => {
+      let score = 0;
+      item.keywords.forEach(keyword => {
+        if (lowerInput.includes(keyword)) score++;
+      });
+      
+      if (score > highestScore) {
+        highestScore = score;
+        bestMatch = item;
+      }
+    });
+
+    // Threshold: If no keywords match strongly enough, use fallback
+    if (highestScore > 0 && bestMatch) {
+      return bestMatch.answer;
+    } else {
+      return fallbackAnswer;
+    }
+  }
+</script>
 </body>
 </html>
