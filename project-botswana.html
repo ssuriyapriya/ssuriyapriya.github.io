@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botswana Obesity Study | Suriyapriya S.</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #546e7a; /* Slate Grey Text */
+            background-color: #fafafa; /* Off-white background */
+            line-height: 1.8;
+        }
+
+        /* --- HEADER --- */
+        .project-header {
+            background-color: #fce4ec; /* Subtle Pink Background */
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 6px solid #ec407a; /* Hot Pink Border */
+        }
+        .project-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #37474f; /* Dark Slate */
+            margin: 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ec407a; /* Hot Pink */
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header-meta {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #78909c;
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-bar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand { font-weight: 800; font-size: 1.2rem; color: #ec407a; text-decoration: none; }
+        .nav-links a {
+            color: #37474f;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #ec407a; }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* --- SECTIONS (ALTERNATE LAYOUT) --- */
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 100px;
+            gap: 60px;
+        }
+        
+        /* Alternate: Even sections flip order */
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text-col {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .img-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ec407a; /* Hot Pink Topic Headings */
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #37474f;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p { margin-bottom: 20px; text-align: justify; font-size: 1.05rem; }
+        
+        ul { list-style: none; padding: 0; }
+        li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        li::before {
+            content: "•";
+            color: #ec407a;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* --- IMAGES --- */
+        .img-placeholder {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(236, 64, 122, 0.15); /* Pink shadow */
+            transition: transform 0.3s;
+            border: 4px solid white;
+        }
+        .img-placeholder:hover { transform: translateY(-5px); }
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #90a4ae;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background-color: white;
+            border-left: 5px solid #ec407a;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            font-weight: 500;
+            color: #37474f;
+        }
+
+        /* --- FOOTER (Centered & White) --- */
+        .footer {
+            background-color: #37474f; /* Dark Background */
+            color: white; /* Text Color */
+            text-align: center; /* Center Alignment */
+            padding: 80px 20px;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer h2 {
+            color: white !important; /* Force White */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .footer p {
+            color: #cfd8dc;
+            text-align: center !important;
+            margin: 0 auto 30px auto;
+        }
+        .btn-back {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #ec407a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .btn-back:hover { background-color: white; color: #ec407a; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-brand">Suriyapriya S.</a>
+        <div class="nav-links">
+            <a href="index.html">Portfolio Home</a>
+            <a href="#study-design">Study Design</a>
+            <a href="#ml-analysis">ML Analysis</a>
+            <a href="#telemetry">Telemetry</a>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container" style="padding:0;">
+            <h1 class="project-title">Botswana Obesity Study</h1>
+            <div class="project-subtitle">Analyzing Telemetry Data from "Fooya!" Mobile Game</div>
+            <div class="header-meta">
+                <span style="margin: 0 15px;"><i class="fa fa-calendar"></i> Research Project</span>
+                <span style="margin: 0 15px;"><i class="fa fa-code"></i> Python, Markov Chains, Telemetry</span>
+                <span style="margin: 0 15px;"><i class="fa fa-users"></i> Role: Researcher & Data Scientist</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="section" id="intro">
+            <div class="text-col">
+                <h2>The Challenge: Pediatric Obesity</h2>
+                <p>
+                    Pediatric obesity is a growing global crisis driven by unhealthy dietary habits and sedentary lifestyles. Traditional educational interventions often fail to engage children. This study explored <strong>implicit learning</strong> via a mobile game called <em>Fooya!</em> to influence children's food choices without direct "lecturing."
+                </p>
+                <div class="highlight-box">
+                    <strong>Study Goal:</strong> "To investigate key gameplay interactions that lead to food-related decision improvements by analyzing telemetry data from a Randomized Controlled Trial (RCT)."
+                </div>
+                <p>
+                    We conducted the study with <strong>90 students</strong> in Chennai, India, randomized into a treatment group (playing Fooya!) and a control group (playing Uno).
+                </p>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Fooya!+Gameplay+Screenshot" class="img-placeholder">
+                <div class="caption">Figure 1: Fooya! gameplay mechanics where avatars fight "bad food" robots.</div>
+            </div>
+        </div>
+
+        <div class="section" id="ml-analysis">
+            <div class="img-col">
+                <img src="https://placehold.co/600x500/37474f/white?text=ML+Classification+Pipeline" class="img-placeholder">
+                <div class="caption">Figure 2: Pipeline for predicting Healthy vs. Unhealthy food choices.</div>
+            </div>
+            <div class="text-col">
+                <h2>Predicting Dietary Choices (ML)</h2>
+                <p>
+                    We built predictive models to classify whether a child would make a <strong>Healthy Choice (1)</strong> or Unhealthy Choice (0) based on their game performance and demographics.
+                </p>
+                <h3>Feature Engineering</h3>
+                <ul>
+                    <li><strong>Demographics:</strong> BMI Category (WHO classification), Age Groups (binned 9-11).</li>
+                    <li><strong>Telemetry Features:</strong> Game Level reached, Usage of Shield, Calories Status.</li>
+                    <li><strong>Preprocessing:</strong> Applied One-Hot Encoding for categorical variables and StandardScaler for normalization.</li>
+                </ul>
+                <h3>Modeling Strategy</h3>
+                <p>
+                    We implemented a <strong>Voting Classifier</strong> combining Logistic Regression (for interpretability) and Random Forest (for non-linear interactions). The ensemble approach improved robustness against class imbalances.
+                </p>
+            </div>
+        </div>
+
+        <div class="section" id="telemetry">
+            <div class="text-col">
+                <h2>Telemetry & Markov Analysis</h2>
+                <p>
+                    To understand player behavior, we modeled game progression using <strong>Markov Chains</strong> and absorbing-state analysis. This revealed critical insights into game difficulty and engagement curves.
+                </p>
+                <h3>Key Findings:</h3>
+                <ul>
+                    <li><strong>Early Friction:</strong> Levels 1 and 2 showed a steep learning curve, taking 3-4 minutes on average, leading to early drop-offs.</li>
+                    <li><strong>The "Mid-Game" Peak:</strong> Levels 5-12 showed the highest event counts, indicating sustained engagement.</li>
+                    <li><strong>Difficulty Spikes:</strong> Level 15 stood out with an average completion time of 3 minutes (vs 1.5 mins for late levels), indicating a potential design bottleneck.</li>
+                </ul>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/ec407a/white?text=Level+Duration+Analysis" class="img-placeholder">
+                <div class="caption">Figure 3: Average time spent per level, highlighting the spike at Level 15.</div>
+            </div>
+        </div>
+
+        <div class="section" id="impact">
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/37474f/white?text=Intervention+Results+Graph" class="img-placeholder">
+                <div class="caption">Figure 4: Correlation between game engagement and healthy snack selection.</div>
+            </div>
+            <div class="text-col">
+                <h2>Results & Conclusion</h2>
+                <p>
+                    The study confirmed that <strong>implicit learning works</strong>. Children who engaged more actively with Fooya!'s mechanics (e.g., using "healthy food" shields) were statistically more likely to choose healthy snacks (apples, yogurt) over unhealthy ones (candy, chips) post-intervention.
+                </p>
+                <h3>Strategic Recommendations:</h3>
+                <ul>
+                    <li><strong>Optimize Onboarding:</strong> Reduce the difficulty of Levels 1-2 to prevent early churn.</li>
+                    <li><strong>Smooth Difficulty Curves:</strong> Refine Level 15 to maintain flow state without frustrating players.</li>
+                    <li><strong>Personalization:</strong> Use telemetry data to provide adaptive feedback, nudging players who frequently choose unhealthy in-game items.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h2>Ready to see more?</h2>
+        <p>Explore my other projects or get in touch.</p>
+        <a href="index.html" class="btn-back">Back to Portfolio</a>
+    </div>
+
+</body>
+</html>
