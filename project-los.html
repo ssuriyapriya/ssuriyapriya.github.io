@@ -71,10 +71,16 @@
                     <div class="stat-card"><div class="stat-value">119</div><div class="stat-label">Max Stay (Days)</div></div>
                 </div>
             </div>
-            <div class="img-col"><img src="https://placehold.co/600x400/fce4ec/ec407a?text=Problem+Statement+Diagram" class="img-placeholder"><div class="caption">Figure 1: Understanding the impact of unpredictable LOS on hospital costs.</div></div>
+            <div class="img-col">
+                <img src="assets/img/data-eng.png" class="img-placeholder" alt="Data Engineering Pipeline">
+                <div class="caption">Figure 1: Data Processing Steps – Cleaning and structuring raw hospital records.</div>
+            </div>
         </div>
         <div class="section" id="analysis">
-            <div class="img-col"><img src="https://placehold.co/600x500/37474f/white?text=Correlation+Heatmap+(Fig+3)" class="img-placeholder"><div class="caption">Figure 2: Multivariate Analysis showing correlation between Severity and LOS.</div></div>
+            <div class="img-col">
+                <img src="assets/img/correlation-matrix.png" class="img-placeholder" alt="Correlation Heatmap">
+                <div class="caption">Figure 2: Correlation Matrix identifying key drivers of Length of Stay.</div>
+            </div>
             <div class="text-col">
                 <h2>Data Engineering & Analysis</h2>
                 <p>We analyzed a comprehensive dataset covering patient demographics, admission types, and clinical severity measures. Multicollinearity was a significant challenge.</p>
@@ -92,10 +98,16 @@
                 <ul><li><strong>Accuracy:</strong> Achieved a prediction accuracy of <strong>93.3%</strong>.</li><li><strong>AUC Score:</strong> 0.84, indicating strong discriminatory power between short and long stays.</li><li><strong>Hyperparameter Tuning:</strong> Optimized learning rate and tree depth to prevent overfitting.</li></ul>
                 <p>The scatter plot (Figure 3) demonstrates a strong positive correlation between Actual and Predicted LOS.</p>
             </div>
-            <div class="img-col"><img src="https://placehold.co/600x400/ec407a/white?text=Actual+vs+Predicted+LOS+(Fig+12)" class="img-placeholder"><div class="caption">Figure 3: High correlation between Actual LOS and Model Predictions.</div></div>
+            <div class="img-col">
+                <img src="assets/img/los.png" class="img-placeholder" alt="Actual vs Predicted Scatter Plot">
+                <div class="caption">Figure 3: Actual vs. Predicted LOS – The model (XGBoost) tracks patient stay duration accurately.</div>
+            </div>
         </div>
         <div class="section" id="impact">
-            <div class="img-col"><img src="https://placehold.co/600x400/37474f/white?text=Power+BI+Dashboard+(Fig+14)" class="img-placeholder"><div class="caption">Figure 4: Interactive Dashboard for Resource Allocation.</div></div>
+            <div class="img-col">
+                <img src="assets/img/model-selection.png" class="img-placeholder" alt="Model Performance Comparison">
+                <div class="caption">Figure 4: Model Selection – XGBoost (93%) outperformed Random Forest and Linear Regression.</div>
+            </div>
             <div class="text-col">
                 <h2>Visualization & Strategic Impact</h2>
                 <p>To make the model insights accessible to hospital administrators, we built an interactive <strong>Power BI Dashboard</strong>. This tool allows stakeholders to visualize bed occupancy trends and anticipate discharge bottlenecks.</p>
