@@ -3,446 +3,473 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   
   <title>Suriyapriya Selvanathan | Healthcare Data Scientist</title>
 
   <style>
-    /* --- SOFT ROSE & SLATE GREY PALETTE --- */
+    /* --- REFINED SOFT PASTEL PALETTE --- */
     :root {
-        --primary-soft: #ec407a; /* Soft Professional Rose */
-        --primary-dark: #c2185b; /* Darker Rose for hover */
-        --text-slate: #37474f;   /* Slate Grey (Softer than black) */
-        --text-light: #546e7a;   /* Lighter Grey for body text */
-        --bg-offwhite: #fafafa;
+        --primary-rose: #ec407a;       /* Vibrant Rose for buttons/links */
+        --sidebar-pink: #fce4ec;       /* Very Soft Pastel Pink for Sidebar */
+        --text-slate: #37474f;         /* Dark Slate Grey for headings */
+        --text-body: #546e7a;          /* Lighter Grey for body text */
+        --bg-light: #fafafa;           /* Clean Off-White Background */
+        --white: #ffffff;
     }
 
     body {
         font-family: 'Montserrat', sans-serif;
-        color: var(--text-slate);
-        background-color: var(--bg-offwhite);
+        color: var(--text-body);
+        background-color: var(--bg-light);
         line-height: 1.6;
     }
 
-    /* Overriding Materialize Defaults */
-    .teal { background-color: var(--primary-soft) !important; }
-    .teal-text { color: var(--primary-soft) !important; }
-    .brown-text { color: var(--text-slate) !important; }
+    /* --- SIDEBAR STYLING (The Fix) --- */
+    /* Making sidebar pastel pink and fixing width/padding */
+    ul.side-nav.fixed {
+        background-color: var(--sidebar-pink) !important;
+        box-shadow: 1px 0 5px rgba(0,0,0,0.05); /* Very subtle shadow */
+        width: 260px; /* Slightly wider to prevent cutoff */
+    }
 
-    /* HEADERS - Bold & Confident */
-    h1, h2, h3, h4, h5 {
-        font-weight: 900 !important;
-        letter-spacing: -0.5px;
-        color: #263238;
+    /* Sidebar Links */
+    ul.side-nav.fixed li a {
+        color: var(--text-slate) !important;
+        font-weight: 600;
+        padding: 0 30px; /* More breathing room */
     }
     
-    /* INTRO SECTION */
-    #intro .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      height: 100%;
+    /* Hover state for sidebar links */
+    ul.side-nav.fixed li a:hover {
+        background-color: rgba(236, 64, 122, 0.1); /* Subtle rose highlight */
+        border-radius: 0 20px 20px 0;
     }
-    #intro .col-md-9 { width: 100%; margin: 0 !important; }
-    
-    .caption h2 {
-        font-size: 3.5rem;
+
+    /* Profile Pic Container */
+    .logo {
+        padding: 40px 0 20px 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
         margin-bottom: 20px;
     }
-    
-    .intro-tagline {
-        color: var(--text-light);
-        font-weight: 600;
-        font-size: 1.25rem;
-        max-width: 800px;
-        margin: 20px auto;
+    .profile-pic {
+        border: 4px solid var(--white);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        width: 130px; 
+        height: 130px;
     }
 
-    /* BUTTONS - Soft Pill Shape */
-    .btn-floating {
-        background-color: var(--primary-soft) !important;
-        box-shadow: 0 4px 10px rgba(236, 64, 122, 0.3);
-    }
-    .btn-floating:hover {
-        background-color: var(--primary-dark) !important;
-        transform: translateY(-2px);
+    /* Adjust main content margin to match new sidebar width */
+    @media only screen and (min-width : 993px) {
+        header, main, footer {
+            padding-left: 260px; 
+        }
     }
 
-    .readme, .contactme {
-        padding: 12px 30px;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin: 10px;
+    /* --- TYPOGRAPHY (No Heavy Shadows) --- */
+    h1, h2, h3, h4, h5 {
+        font-weight: 800 !important;
+        letter-spacing: -0.5px;
+        color: var(--text-slate);
+        margin-top: 0;
+        text-shadow: none !important; /* REMOVED BLACK SHADOW */
+    }
+
+    /* Page Titles (Experience, Projects, etc.) */
+    .page-title {
+        color: var(--text-slate) !important;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        position: relative;
         display: inline-block;
-        border-radius: 50px;
-        text-decoration: none;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
+        /* Decorative underline */
+        border-bottom: 4px solid var(--primary-rose); 
+        padding-bottom: 10px;
     }
-    .readme {
-        border: 2px solid var(--primary-soft);
-        color: var(--primary-soft);
-        background: transparent;
+    
+    /* Remove the teal background from titles */
+    .teal { background-color: transparent !important; }
+    .white-text { color: var(--text-slate) !important; }
+
+    /* --- INTRO SECTION --- */
+    #intro {
+        padding: 100px 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
     }
-    .readme:hover {
-        background-color: var(--primary-soft);
-        color: white;
+    
+    .intro-name {
+        color: var(--primary-rose);
+        font-size: 4rem;
+        font-weight: 900;
     }
-    .contactme {
-        background-color: var(--primary-soft);
-        color: white;
-        box-shadow: 0 4px 15px rgba(236, 64, 122, 0.3);
-    }
-    .contactme:hover {
-        background-color: var(--primary-dark);
-        box-shadow: 0 6px 20px rgba(236, 64, 122, 0.4);
+    
+    .intro-role {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-slate);
+        margin-top: 10px;
     }
 
-    /* CARDS */
+    /* --- CARDS (Clean & Spacious) --- */
     .card {
         border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05) !important;
-        border: none;
+        background-color: var(--white);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04) !important; /* Soft shadow */
+        border: 1px solid rgba(0,0,0,0.02);
+        margin-bottom: 30px;
         transition: transform 0.3s ease;
     }
     .card:hover {
         transform: translateY(-5px);
-    }
-    
-    /* List styling in cards */
-    .card-content ul li {
-        list-style-type: disc !important;
-        margin-left: 20px;
-        margin-bottom: 8px;
-        color: var(--text-light);
-    }
-    
-    .role {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        color: var(--primary-soft);
+        box-shadow: 0 8px 25px rgba(236, 64, 122, 0.15) !important;
     }
 
-    /* SKILLS */
-    .skill-icon {
-        height: 50px;
-        width: 50px;
+    /* Experience Header Styling - The "Space" Fix */
+    .exp-header {
         margin-bottom: 15px;
     }
-    .skill-name {
+    .exp-company {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--primary-rose);
+        display: block; /* Forces new line */
+    }
+    .exp-role {
+        font-size: 1.1rem;
         font-weight: 700;
-        font-size: 0.9rem;
         color: var(--text-slate);
-    }
-
-    /* NAVBAR */
-    nav {
-        background-color: white !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    }
-    nav ul a {
-        color: var(--text-slate) !important;
-        font-weight: 700;
-    }
-
-    /* FOOTER */
-    footer {
-        background-color: #263238;
-        color: white;
-        padding: 40px 0;
-        text-align: center;
-    }
-
-    /* Project Images */
-    .card-image img {
-        object-fit: cover;
-        height: 200px;
+        display: block; /* Forces new line */
+        margin-top: 5px; /* Adds space between Company and Role */
     }
     
-    .overlay {
-        background-color: rgba(255, 255, 255, 0.92) !important;
+    .card-content ul li {
+        list-style-type: none;
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 8px;
+    }
+    .card-content ul li::before {
+        content: "•";
+        color: var(--primary-rose);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+
+    /* --- BUTTONS --- */
+    .btn-custom {
+        border-radius: 50px;
+        padding: 12px 35px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 10px;
+        display: inline-block;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(236, 64, 122, 0.2);
+    }
+    
+    .btn-fill {
+        background-color: var(--primary-rose);
+        color: white;
+        border: 2px solid var(--primary-rose);
+    }
+    .btn-fill:hover {
+        background-color: #d81b60;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+        background-color: transparent;
+        color: var(--primary-rose);
+        border: 2px solid var(--primary-rose);
+    }
+    .btn-outline:hover {
+        background-color: var(--primary-rose);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Social Icons in Intro */
+    .social-icon {
+        font-size: 2rem;
+        color: var(--text-slate);
+        margin: 0 15px;
+        transition: color 0.3s;
+    }
+    .social-icon:hover {
+        color: var(--primary-rose);
+    }
+
+    /* Skills Grid */
+    .skill-item {
+        margin-bottom: 25px;
+    }
+    .skill-img {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+    .skill-title {
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--sidebar-pink);
+        padding: 40px 0;
+        text-align: center;
+        color: var(--text-slate);
+        margin-top: 50px;
+    }
+    
+    /* Mobile Nav Trigger Color */
+    .button-collapse i {
+        color: var(--primary-rose);
     }
   </style>
 </head>
 
 <body>
-  
-  <nav class="hide-on-small-only">
-    <ul class="side-nav fixed section table-of-contents">
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/passport-new.jpg" onerror="this.src='https://placehold.co/200x200?text=Photo'" class="circle img-responsive profile-pic" alt="avatar">
-        </a>
-      </li>
-      <li class="bold"><a href="#about" class="waves-effect waves-dark teal-text">About</a></li>
-      <li class="bold"><a href="#experience" class="waves-effect waves-dark teal-text">Experience</a></li>
-      <li class="bold"><a href="#projects" class="waves-effect waves-dark teal-text">Projects</a></li>
-      <li class="bold"><a href="#skills" class="waves-effect waves-dark teal-text">Skills</a></li>
-      <li class="bold"><a href="#education" class="waves-effect waves-dark teal-text">Education</a></li>
-      <li class="bold"><a href="#contact" class="waves-effect waves-dark teal-text">Contact</a></li>
-    </ul>
-  </nav>
 
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu" style="color: #333;"></i></a>
-    <div class="name-title">
-      <a id="name" href="#" class="teal-text">Suriyapriya Selvanathan</a>
+  <nav class="hide-on-large-only white">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" class="brand-logo center" style="color: #ec407a; font-weight:800; font-size: 1.2rem;">Suriyapriya S.</a>
     </div>
   </nav>
 
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <ul id="slide-out" class="side-nav fixed">
+    <li class="logo">
+      <img src="/assets/img/passport-new.jpg" onerror="this.src='https://placehold.co/200x200?text=Photo'" class="circle profile-pic" alt="Suriyapriya">
+    </li>
+    <li><a href="#about" class="waves-effect">About</a></li>
+    <li><a href="#experience" class="waves-effect">Experience</a></li>
+    <li><a href="#projects" class="waves-effect">Projects</a></li>
+    <li><a href="#skills" class="waves-effect">Skills</a></li>
+    <li><a href="#education" class="waves-effect">Education</a></li>
+    <li><a href="#contact" class="waves-effect">Contact</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#" target="_blank" class="waves-effect"><i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i> Resume</a></li>
+  </ul>
 
   <main>
-    <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
+    
+    <section id="intro">
       <div class="container">
-        <div class="col-md-9">
-          <div class="caption">
-            <h2>Hi, I'm <span class="teal-text">Suriyapriya.</span></h2>
+        <div class="row">
+          <div class="col s12 m10 offset-m1 center-align">
+            <h2 style="font-weight: 800; color: #37474f;">Hi, I'm</h2>
+            <h1 class="intro-name">Suriyapriya.</h1>
             
-            <h4 style="color:#37474f; margin-top: 10px;">
-                Healthcare Data Scientist | Product Manager | Strategist
-            </h4>
+            <h3 class="intro-role">Healthcare Data Scientist | Product Manager | Strategist</h3>
             
-            <p class="intro-tagline">
-                I don't just analyze data—I build deployable AI solutions that optimize clinical operations and financial performance. <br>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #546e7a;">
+                I build deployable AI solutions that optimize clinical operations and financial performance. 
                 <b>Bridging the gap between complex healthcare data and actionable strategy.</b>
             </p>
-          </div>
-          <div class="social">
-            <a href="http://linkedin.com/in/suriyapriya-s" target="_blank">
-              <button class="icon-btn linkedin"><i class="fa fa-linkedin"></i></button>
-            </a>
-            <a href="https://github.com/ssuriyapriya" target="_blank">
-              <button class="icon-btn github"><i class="fa fa-github"></i></button>
-            </a>
-          </div>
-          <div class='buttons'>
-            <a href="#about" class="readme">Why Hire Me?</a>
-            <a href="#contact" class="contactme">Let's Talk</a>
+            
+            <div style="margin: 30px 0;">
+                <a href="https://linkedin.com/in/suriyapriya-s" target="_blank" class="social-icon"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/ssuriyapriya" target="_blank" class="social-icon"><i class="fa fa-github"></i></a>
+                <a href="mailto:sselvana@andrew.cmu.edu" class="social-icon"><i class="fa fa-envelope"></i></a>
+            </div>
+
+            <div>
+                <a href="#experience" class="btn-custom btn-fill">Why Hire Me?</a>
+                <a href="#contact" class="btn-custom btn-outline">Let's Talk</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About Me</h3>
-      <div class="container flow-text">
-        <p>
+    <section id="about" class="scrollspy">
+      <div class="container">
+        <h3 class="page-title">About Me</h3>
+        <p style="font-size: 1.1rem; margin-bottom: 20px;">
           I am a Master of Science student in <b>Health Care Analytics and IT</b> at Carnegie Mellon University (Class of 2026). My work sits squarely at the intersection of Data Science, Product Management, and Healthcare Strategy.
         </p>
-        <p>
+        <p style="font-size: 1.1rem;">
           With professional experience at <b>Highmark Health</b>, <b>Allegheny Health Network</b>, and <b>Latent View Analytics</b>, I have successfully managed large-scale projects and deployed machine learning models that optimize clinical operations. I am a healthcare enthusiast dedicated to bridging the gap between technical innovation and patient care.
         </p>
       </div>
     </section>
 
-    <section id="experience" class="section scrollspy">
-      <h3 class="page-title white-text teal">Experience</h3>
+    <section id="experience" class="scrollspy" style="margin-top: 80px;">
       <div class="container">
-        
+        <h3 class="page-title">Experience</h3>
+
         <div class="card">
           <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <img src="/assets/img/highmark-logo.png" onerror="this.src='https://placehold.co/100x100?text=Highmark'" class="responsive-img center-block" alt="Highmark"/>
+            <div class="row valign-wrapper">
+              <div class="col s3 m2 center-align hide-on-small-only">
+                 <img src="/assets/img/highmark-logo.png" onerror="this.src='https://placehold.co/80x80?text=HM'" class="responsive-img" alt="Highmark">
               </div>
               <div class="col s12 m10">
-                <p><span class="card-title"><a href="#" class="teal-text hoverline">Highmark Health / AHN</a></span></p>
+                 <div class="exp-header">
+                    <span class="exp-company">Highmark Health / AHN</span>
+                    <span class="exp-role">Capstone Project Data Lead</span>
+                    <span style="display:block; font-size: 0.9rem; color: #90a4ae; margin-top: 5px;">Jan 2026 – Present | Pittsburgh, PA</span>
+                 </div>
+                 <ul>
+                  <li>Spearheading a strategic initiative to model longitudinal cancer cost trajectories, utilizing Python and SQL to engineer data workflows that ingest complex claims data.</li>
+                  <li>Developing predictive risk algorithms and conducting cost-driver sensitivity analyses to identify financial variances, directly supporting Value-Based Care.</li>
+                  <li>Translating technical model outputs into actionable insights for clinical leadership.</li>
+                 </ul>
               </div>
             </div>
-            <div class="role">Capstone Project Data Lead</div>
-            <ul>
-              <li>Spearheading a strategic initiative to model longitudinal cancer cost trajectories, utilizing Python and SQL to engineer data workflows that ingest complex administrative claims and clinical utilization data.</li>
-              <li>Developing predictive risk algorithms and conducting cost-driver sensitivity analyses to identify financial variances, directly supporting Value-Based Care resource allocation.</li>
-              <li>Translating technical model outputs into actionable insights for clinical leadership, ensuring data-driven strategies align with population health goals and potential cost-saving opportunities.</li>
-            </ul>
           </div>
-          <div class="card-action"><span>Jan 2026 – Present | Pittsburgh, PA</span></div>
         </div>
 
         <div class="card">
           <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <img src="/assets/img/cmu-logo.png" onerror="this.src='https://placehold.co/100x100?text=CMU'" class="responsive-img center-block" alt="CMU"/>
+            <div class="row valign-wrapper">
+              <div class="col s3 m2 center-align hide-on-small-only">
+                 <img src="/assets/img/cmu-logo.png" onerror="this.src='https://placehold.co/80x80?text=CMU'" class="responsive-img" alt="CMU">
               </div>
               <div class="col s12 m10">
-                <p><span class="card-title"><a href="#" class="teal-text hoverline">Carnegie Mellon University</a></span></p>
+                 <div class="exp-header">
+                    <span class="exp-company">Carnegie Mellon University</span>
+                    <span class="exp-role">Research Assistant – Prof. Rema Padman</span>
+                    <span style="display:block; font-size: 0.9rem; color: #90a4ae; margin-top: 5px;">Aug 2025 – Present | Pittsburgh, PA</span>
+                 </div>
+                 <ul>
+                  <li>Engineered a feature labeling scheme to process over 65,000 raw game telemetry events from a pediatric RCT.</li>
+                  <li>Developed a discrete, first-order Markov Chain model (7 states) to visualize stochastic gameplay patterns.</li>
+                  <li>Applied Poisson regression to identify a counterintuitive "priming effect" influencing health behaviors.</li>
+                 </ul>
               </div>
             </div>
-            <div class="role">Research Assistant – Prof. Rema Padman</div>
-            <ul>
-              <li>Engineered a feature labeling scheme to process over 65,000 raw game telemetry events from a pediatric RCT, constructing chronological event sequences to map user trajectories.</li>
-              <li>Developed a discrete, first-order Markov Chain model (7 states) to visualize stochastic gameplay patterns, applied the MDA framework and Poisson regression to identify a counterintuitive "priming effect" influencing health behaviors.</li>
-            </ul>
           </div>
-          <div class="card-action"><span>Aug 2025 – Present | Pittsburgh, PA</span></div>
         </div>
 
         <div class="card">
           <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <img src="/assets/img/ahn-logo.png" onerror="this.src='https://placehold.co/100x100?text=AHN'" class="responsive-img center-block" alt="AHN"/>
+            <div class="row valign-wrapper">
+              <div class="col s3 m2 center-align hide-on-small-only">
+                 <img src="/assets/img/ahn-logo.png" onerror="this.src='https://placehold.co/80x80?text=AHN'" class="responsive-img" alt="AHN">
               </div>
               <div class="col s12 m10">
-                <p><span class="card-title"><a href="#" class="teal-text hoverline">Allegheny Health Network</a></span></p>
+                 <div class="exp-header">
+                    <span class="exp-company">Allegheny Health Network</span>
+                    <span class="exp-role">Data Science Intern</span>
+                    <span style="display:block; font-size: 0.9rem; color: #90a4ae; margin-top: 5px;">Jun – Aug 2025 | Pittsburgh, PA</span>
+                 </div>
+                 <ul>
+                  <li>Designed a clinical decision support system to process RWD from 15,000+ health screenings.</li>
+                  <li>Built a robust data pipeline to integrate diverse structured and unstructured data sources for time-series analysis.</li>
+                  <li>Created modules for data quality validation and built interactive dashboards (Geopy, Folium, Tableau).</li>
+                 </ul>
               </div>
             </div>
-            <div class="role">Data Science Intern</div>
-            <ul>
-              <li>Designed a clinical data platform and decision support system to process and analyze Real-World Data (RWD) from over 15,000 health screenings, while managing project timelines in MS Project.</li>
-              <li>Built a robust data pipeline to integrate diverse structured and unstructured data sources, creating longitudinal patient records essential for time-series analysis.</li>
-              <li>Created modules for data quality validation and built interactive dashboards (Geopy, Folium, Tableau) to help clinicians flag high-risk patients, improving data curation efficiency by 83%.</li>
-            </ul>
           </div>
-          <div class="card-action"><span>Jun – Aug 2025 | Pittsburgh, PA</span></div>
-        </div>
-        
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <img src="/assets/img/latentview-logo.png" onerror="this.src='https://placehold.co/100x100?text=LatentView'" class="responsive-img center-block" alt="Latent View"/>
-              </div>
-              <div class="col s12 m10">
-                <p><span class="card-title"><a href="#" class="teal-text hoverline">Latent View Analytics</a></span></p>
-              </div>
-            </div>
-            <div class="role">Data Analyst</div>
-            <ul>
-              <li>Analyzed longitudinal clinical data from over 2 million patient records, using survival analysis and feature importance from Machine Learning (XGBoost) models to identify key predictors of disease progression.</li>
-              <li>Engineered and deployed ensemble models (Gradient boosting) for real-time patient risk stratification, leading to a 25% improvement in accuracy of identifying high-risk candidates for preventative care interventions.</li>
-            </ul>
-          </div>
-          <div class="card-action"><span>Jun 2023 – Jul 2024 | India</span></div>
         </div>
 
         <div class="card">
             <div class="card-content">
-              <div class="row">
-                <div class="col s12 m2">
-                  <img src="/assets/img/sct-logo.png" onerror="this.src='https://placehold.co/100x100?text=SCT'" class="responsive-img center-block" alt="SCT"/>
+              <div class="row valign-wrapper">
+                <div class="col s3 m2 center-align hide-on-small-only">
+                   <img src="/assets/img/latentview-logo.png" onerror="this.src='https://placehold.co/80x80?text=LV'" class="responsive-img" alt="Latent View">
                 </div>
                 <div class="col s12 m10">
-                  <p><span class="card-title"><a href="#" class="teal-text hoverline">Sree Chitra Tirunal Institute</a></span></p>
+                   <div class="exp-header">
+                      <span class="exp-company">Latent View Analytics</span>
+                      <span class="exp-role">Data Analyst</span>
+                      <span style="display:block; font-size: 0.9rem; color: #90a4ae; margin-top: 5px;">Jun 2023 – Jul 2024 | India</span>
+                   </div>
+                   <ul>
+                    <li>Analyzed longitudinal clinical data from 2M+ patient records using survival analysis and XGBoost.</li>
+                    <li>Deployed ensemble models for real-time patient risk stratification, improving high-risk candidate ID by 25%.</li>
+                   </ul>
                 </div>
               </div>
-              <div class="role">Clinical Analyst Intern</div>
-              <ul>
-                <li>Spearheaded the full-stack development of a patient portal application (modeled after Epic's MyChart), creating a user-friendly interface for patients.</li>
-                <li>Developed statistical models (regression, classification) to assess patterns in clinical data and stratify high-risk patients.</li>
-              </ul>
             </div>
-            <div class="card-action"><span>May – Jul 2022 | India</span></div>
           </div>
 
       </div>
     </section>
 
-    <section id="projects" class="section scrollspy">
-      <h3 class="page-title white-text teal">Key Projects</h3>
+    <section id="projects" class="scrollspy" style="margin-top: 80px;">
       <div class="container">
+        <h3 class="page-title">Key Projects</h3>
         <div class="row">
           
           <div class="col s12 m6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img src="/assets/img/project-nlp.png" onerror="this.src='https://placehold.co/600x400/ec407a/white?text=Multimodal+AI+(NLP)'" class="activator" alt="NLP Project" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Multimodal AI for Clinical Notes<i class="mdi-navigation-more-vert right"></i></span>
-                <p>LLM/NLP system for clinical concept abstraction.</p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Jun – Aug 2025</small><i class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Developed a novel system to perform abstraction of clinical concepts from unstructured EHR data (typed & handwritten).</li>
-                  <li>Implemented a dual-architecture model: Vision Transformer (ViT) for OCR and fine-tuned BERT LLM for summarization.</li>
-                  <li>Achieved 40% reduction in manual review time and ROUGE score of 0.82.</li>
-                </ul>
-              </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="/assets/img/project-nlp.png" onerror="this.src='https://placehold.co/600x300/ec407a/white?text=Multimodal+AI'" style="height: 200px; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: 800; color: #ec407a;">Multimodal AI for Clinical Notes</span>
+                    <p style="margin-bottom: 10px; font-weight: 600;">Jun – Aug 2025</p>
+                    <ul>
+                        <li>Developed system for abstraction of clinical concepts from unstructured EHR data (typed & handwritten).</li>
+                        <li>Implemented dual-architecture: Vision Transformer (ViT) and fine-tuned BERT LLM.</li>
+                        <li>Achieved 40% reduction in manual review time (ROUGE: 0.82).</li>
+                    </ul>
+                </div>
             </div>
           </div>
 
           <div class="col s12 m6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img src="/assets/img/project-diabetes.png" onerror="this.src='https://placehold.co/600x400/37474f/white?text=Diabetes+Risk+AI'" class="activator" alt="Diabetes Project" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Diabetes Risk Assessment<i class="mdi-navigation-more-vert right"></i></span>
-                <p>DSS predicting 30-day hospital readmissions.</p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Feb – May 2025</small><i class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Built a clinical decision support system using Gradient Boosting to predict 30-day hospital readmissions (94.7% accuracy).</li>
-                  <li>Engineered features capturing temporal patterns and comorbidity interactions; handled class imbalance with SMOTEENN.</li>
-                  <li>Conducted sensitivity analysis to provide actionable insights for care management.</li>
-                </ul>
-              </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="/assets/img/project-diabetes.png" onerror="this.src='https://placehold.co/600x300/37474f/white?text=Diabetes+Risk+AI'" style="height: 200px; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: 800; color: #ec407a;">Diabetes Risk Assessment</span>
+                    <p style="margin-bottom: 10px; font-weight: 600;">Feb – May 2025</p>
+                    <ul>
+                        <li>Built DSS using Gradient Boosting to predict 30-day hospital readmissions (94.7% accuracy).</li>
+                        <li>Engineered features for comorbidity interactions; handled class imbalance with SMOTEENN.</li>
+                    </ul>
+                </div>
             </div>
           </div>
           
           <div class="col s12 m6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img src="/assets/img/project-los.png" onerror="this.src='https://placehold.co/600x400/ec407a/white?text=Length+of+Stay+Pred'" class="activator" alt="LOS Project" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Patient LOS Prediction<i class="mdi-navigation-more-vert right"></i></span>
-                <p>Predicting patient discharge timelines.</p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Jun – Aug 2025</small><i class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Performed clinical analyses using SQL/Python to predict LOS, identifying XGBoost as optimal (93.3% accuracy).</li>
-                  <li>Built an interactive Power BI dashboard to visualize model predictions and support discharge planning.</li>
-                </ul>
-              </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="/assets/img/project-los.png" onerror="this.src='https://placehold.co/600x300/ec407a/white?text=LOS+Prediction'" style="height: 200px; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: 800; color: #ec407a;">Patient Length of Stay</span>
+                    <p style="margin-bottom: 10px; font-weight: 600;">Jun – Aug 2025</p>
+                    <ul>
+                        <li>Used SQL/Python to predict LOS, identifying XGBoost as optimal (93.3% accuracy).</li>
+                        <li>Built Power BI dashboard to support discharge planning.</li>
+                    </ul>
+                </div>
             </div>
           </div>
 
           <div class="col s12 m6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img src="/assets/img/project-opioid.png" onerror="this.src='https://placehold.co/600x400/37474f/white?text=Opioid+Intervention'" class="activator" alt="Opioid Project" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Opioid Crisis Intervention<i class="mdi-navigation-more-vert right"></i></span>
-                <p>Predict-Then-Optimize framework for site placement.</p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Aug – Dec 2025</small><i class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Developed and deployed 106 individual ARIMA time-series models to forecast fatal overdose events by ZIP code.</li>
-                  <li>Formulated a maximal covering location problem using Gurobi optimization, increasing network coverage by 10%.</li>
-                </ul>
-              </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="/assets/img/project-opioid.png" onerror="this.src='https://placehold.co/600x300/37474f/white?text=Opioid+Optimization'" style="height: 200px; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: 800; color: #ec407a;">Opioid Crisis Intervention</span>
+                    <p style="margin-bottom: 10px; font-weight: 600;">Aug – Dec 2025</p>
+                    <ul>
+                        <li>Deployed 106 ARIMA time-series models to forecast overdoses by ZIP code.</li>
+                        <li>Formulated Gurobi optimization to maximize service coverage.</li>
+                    </ul>
+                </div>
             </div>
           </div>
 
@@ -450,54 +477,54 @@
       </div>
     </section>
 
-    <section id="skills" class="section scrollspy">
-      <h3 class="page-title white-text teal">Skills</h3>
+    <section id="skills" class="scrollspy" style="margin-top: 80px;">
       <div class="container">
+        <h3 class="page-title">Skills</h3>
         
         <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light" style="text-align: center;">Technical Skills</h4>
-            <div class="row text-center">
-              <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-icon" alt="Python"/>
-                <br><span class="skill-name">Python (Pandas, Scikit-Learn)</span>
-              </div>
-              <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-icon" alt="SQL"/>
-                <br><span class="skill-name">SQL</span>
-              </div>
-              <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" class="skill-icon" alt="R"/>
-                <br><span class="skill-name">R</span>
-              </div>
-               <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="skill-icon" alt="Tensorflow"/>
-                <br><span class="skill-name">Deep Learning</span>
-              </div>
-               <div class="col s6 m3">
-                <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" class="skill-icon" alt="Tableau"/>
-                <br><span class="skill-name">Tableau</span>
-              </div>
-              <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-icon" alt="AWS"/>
-                <br><span class="skill-name">Cloud (AWS/GCP)</span>
-              </div>
-              <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-icon" alt="Git"/>
-                <br><span class="skill-name">Git & Docker</span>
-              </div>
-              <div class="col s6 m3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-icon" alt="HTML5"/>
-                <br><span class="skill-name">Web (HTML/CSS)</span>
-              </div>
+            <div class="card-content">
+                <h5 style="text-align: center; font-weight: 800; margin-bottom: 40px; color: #37474f;">Technical Arsenal</h5>
+                <div class="row center-align">
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-img" alt="Python">
+                        <div class="skill-title">Python</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-img" alt="SQL">
+                        <div class="skill-title">SQL</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" class="skill-img" alt="R">
+                        <div class="skill-title">R</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="skill-img" alt="Tensorflow">
+                        <div class="skill-title">Deep Learning</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" class="skill-img" alt="Tableau">
+                        <div class="skill-title">Tableau</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-img" alt="AWS">
+                        <div class="skill-title">AWS/Cloud</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-img" alt="Git">
+                        <div class="skill-title">Git</div>
+                    </div>
+                    <div class="col s4 m3 skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-img" alt="HTML5">
+                        <div class="skill-title">Web</div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
         <div class="card">
             <div class="card-content">
-                <h5 class="brown-text" style="font-weight: 800;">Leadership & Awards</h5>
-                <ul>
+                <h5 style="font-weight: 800; color: #ec407a;">Leadership & Awards</h5>
+                <ul style="margin-top: 20px;">
                     <li>Safety21 US DOT Transportation Fellow</li>
                     <li>Super Analytics Case Competition - Finalist</li>
                     <li>2025 Patient Safety Fellowship Recipient</li>
@@ -511,87 +538,61 @@
       </div>
     </section>
 
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
+    <section id="education" class="scrollspy" style="margin-top: 80px;">
       <div class="container">
+        <h3 class="page-title">Education</h3>
         <div class="row">
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p><span class="card-title"><a href="https://www.cmu.edu/" class="teal-text hoverline">Carnegie Mellon University</a></span></p>
-                <p class="brown-text">Pittsburgh, PA | May 2026</p>
-                <p><b>MS in Health Care Analytics & IT</b></p>
-                <ul>
-                    <li>Coursework: Machine Learning, Advanced AI, Applied Econometrics, NLP, Optimization, Decision & Risk Modeling, Responsible AI, Project Management.</li>
-                </ul>
-              </div>
+            <div class="col s12 m6">
+                <div class="card" style="height: 100%;">
+                    <div class="card-content">
+                        <span class="exp-company">Carnegie Mellon University</span>
+                        <p style="font-weight: 600; color: #546e7a;">Pittsburgh, PA | May 2026</p>
+                        <p style="margin-top: 10px; font-weight: 700;">MS in Health Care Analytics & IT</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">Coursework: ML, Advanced AI, Applied Econometrics, NLP, Optimization, Responsible AI.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p><span class="card-title"><a href="#" class="teal-text hoverline">PSG College of Technology</a></span></p>
-                <p class="brown-text">Coimbatore, India | Apr 2023</p>
-                <p><b>BE in Biomedical Engineering</b></p>
-                <ul>
-                    <li>Coursework: AI, ML & Data Science, Statistics, Pattern Recognition, Neural Networks.</li>
-                </ul>
-              </div>
+            <div class="col s12 m6">
+                <div class="card" style="height: 100%;">
+                    <div class="card-content">
+                        <span class="exp-company">PSG College of Technology</span>
+                        <p style="font-weight: 600; color: #546e7a;">Coimbatore, India | Apr 2023</p>
+                        <p style="margin-top: 10px; font-weight: 700;">BE in Biomedical Engineering</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">Coursework: AI, ML & Data Science, Statistics, Pattern Recognition.</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section scrollspy full-height">
-      <h3 class="page-title white-text teal">Contact</h3>
-      <div class="container">
-        <p>
-          <a href="mailto:sselvana@andrew.cmu.edu" class="btn-floating btn-large waves-effect waves-light tooltipped"><i class="fa fa-envelope"></i></a>
-          <a href="mailto:sselvana@andrew.cmu.edu" class="hoverline" style="color: #333; font-weight: 600; margin-left: 10px;">sselvana@andrew.cmu.edu</a>
-        </p>
-        <p>
-          <a href="https://github.com/ssuriyapriya" class="btn-floating btn-large waves-effect waves-light tooltipped"><i class="fa fa-github"></i></a>
-          <a href="https://github.com/ssuriyapriya" class="hoverline" style="color: #333; font-weight: 600; margin-left: 10px;">github.com/ssuriyapriya</a>
-        </p>
-        <p>
-          <a href="https://linkedin.com/in/suriyapriya-s" class="btn-floating btn-large waves-effect waves-light tooltipped"><i class="fa fa-linkedin"></i></a>
-          <a href="https://linkedin.com/in/suriyapriya-s" class="hoverline" style="color: #333; font-weight: 600; margin-left: 10px;">linkedin.com/in/suriyapriya-s</a>
-        </p>
-      </div>
-    </section>
+    <footer>
+        <div class="container">
+            <p style="font-weight: 600;">© 2026 Suriyapriya Selvanathan</p>
+            <div style="font-size: 1.5rem; margin-top: 10px;">
+                <a href="https://linkedin.com/in/suriyapriya-s" target="_blank" style="color: #37474f; margin: 0 10px;"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/ssuriyapriya" target="_blank" style="color: #37474f; margin: 0 10px;"><i class="fa fa-github"></i></a>
+                <a href="mailto:sselvana@andrew.cmu.edu" style="color: #37474f; margin: 0 10px;"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
   </main>
 
-  <footer>
-    <div class="container">
-        <p>© 2026 Suriyapriya Selvanathan | Made with <i class="fa fa-heart" aria-hidden="true"></i></p>
-        <div style="font-size: 1.5rem;">
-            <a href="https://linkedin.com/in/suriyapriya-s" target="_blank" style="color:white"><i class="fa fa-linkedin"></i></a> &nbsp;
-            <a href="https://github.com/ssuriyapriya" target="_blank" style="color:white"><i class="fa fa-github"></i></a>
-        </div>
-    </div>
-  </footer>
-
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: ["Healthcare Data Scientist", "Product Manager", "Healthcare Consultant"],
-      loop: true,
-      typeSpeed: 80,
-      backSpeed: 40
-    });
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script>
-    $(document).ready(function () {
-      $(".scrollspy").scrollSpy()
-      $(".button-collapse").sideNav({
-        menuWidth: 190,
-        edge: "left",
-        closeOnClick: true
-      })
-    })
+    $(document).ready(function(){
+      $('.button-collapse').sideNav({
+          menuWidth: 260, 
+          edge: 'left', 
+          closeOnClick: true,
+          draggable: true 
+      });
+      $('.scrollspy').scrollSpy({
+          scrollOffset: 60
+      });
+    });
   </script>
 </body>
 </html>
