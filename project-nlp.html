@@ -65,10 +65,17 @@
                 <p>Medical errors due to illegible handwriting cause an estimated <strong>7,000 preventable deaths annually</strong> in the US alone. Existing systems struggle to process mixed formats (handwritten + printed) in medical reports, leading to inefficiencies and data loss.</p>
                 <div class="highlight-box"><strong>Project Goal:</strong> "To develop a system that interprets handwritten medical notes into a digital form, converting unstructured data into a structured, searchable, and easily readable format."</div>
             </div>
-            <div class="img-col"><img src="https://placehold.co/600x400/fce4ec/ec407a?text=Input+Medical+Report" class="img-placeholder"><div class="caption">Figure 1: Sample Input - A scanned medical report with mixed text types.</div></div>
+            <div class="img-col">
+                <img src="assets/img/output.png" class="img-placeholder" alt="Final Digital Output">
+                <div class="caption">Figure 1: Project Output - Converting raw medical data into digital text.</div>
+            </div>
         </div>
+        
         <div class="section" id="pipeline">
-            <div class="img-col"><img src="https://placehold.co/600x500/37474f/white?text=Methodology+Flowchart+(Fig+4.1)" class="img-placeholder"><div class="caption">Figure 2: System Architecture (Adaptive Thresholding -> CCA -> Recognition).</div></div>
+            <div class="img-col">
+                <img src="assets/img/method.png" class="img-placeholder" alt="Methodology Flowchart">
+                <div class="caption">Figure 2: System Architecture & Data Flow.</div>
+            </div>
             <div class="text-col">
                 <h2>System Architecture & Methodology</h2>
                 <p>The solution utilizes a multi-stage pipeline combining Computer Vision for preprocessing and Deep Learning for recognition.</p>
@@ -79,6 +86,18 @@
                 </ul>
             </div>
         </div>
+
+        <div class="section">
+             <div class="text-col">
+                <h2>Medical Entity Recognition</h2>
+                <p>Beyond simple OCR, the system needed to understand context. We implemented a secondary layer to interpret specific medical terminology, linking abbreviated handwritten notes to standardized medical definitions.</p>
+            </div>
+            <div class="img-col">
+                <img src="assets/img/interpret-med-terms.png" class="img-placeholder" alt="Interpreting Medical Terms">
+                <div class="caption">Figure 3: Logic for Interpreting and Standardizing Medical Terms.</div>
+            </div>
+        </div>
+
         <div class="section" id="results">
             <div class="text-col">
                 <h2>Performance Evaluation</h2>
@@ -91,7 +110,10 @@
                 </table>
                 <p>Our proposed method (91.26%) outperformed standard baselines like Wei et al. (90.6%), demonstrating the robustness of the hybrid approach.</p>
             </div>
-            <div class="img-col"><img src="https://placehold.co/600x400/ec407a/white?text=Confusion+Matrix+(Fig+5.6)" class="img-placeholder"><div class="caption">Figure 4: Confusion Matrix showing classification performance across text types.</div></div>
+            <div class="img-col">
+                <img src="assets/img/ocr-accuracy.png" class="img-placeholder" alt="OCR Accuracy Chart">
+                <div class="caption">Figure 4: OCR Accuracy Comparison (Character vs. Word Level).</div>
+            </div>
         </div>
     </div>
     <div class="footer"><h2>Ready to see more?</h2><p>Explore my other projects or get in touch.</p><a href="index.html" class="btn-back">Back to Portfolio</a></div>
