@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opioid Crisis Intervention | Suriyapriya S.</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #546e7a; /* Slate Grey Text */
+            background-color: #fafafa; /* Off-white background */
+            line-height: 1.8;
+        }
+
+        /* --- HEADER --- */
+        .project-header {
+            background-color: #fce4ec; /* Subtle Pink Background */
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 6px solid #ec407a; /* Hot Pink Border */
+        }
+        .project-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #37474f; /* Dark Slate */
+            margin: 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ec407a; /* Hot Pink */
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header-meta {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #78909c;
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-bar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand { font-weight: 800; font-size: 1.2rem; color: #ec407a; text-decoration: none; }
+        .nav-links a {
+            color: #37474f;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #ec407a; }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* --- SECTIONS (ALTERNATE LAYOUT) --- */
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 100px;
+            gap: 60px;
+        }
+        
+        /* Alternate: Even sections flip order */
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text-col {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .img-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ec407a; /* Hot Pink Topic Headings */
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #37474f;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p { margin-bottom: 20px; text-align: justify; font-size: 1.05rem; }
+        
+        ul { list-style: none; padding: 0; }
+        li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        li::before {
+            content: "•";
+            color: #ec407a;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* --- IMAGES --- */
+        .img-placeholder {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(236, 64, 122, 0.15); /* Pink shadow */
+            transition: transform 0.3s;
+            border: 4px solid white;
+        }
+        .img-placeholder:hover { transform: translateY(-5px); }
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #90a4ae;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background-color: white;
+            border-left: 5px solid #ec407a;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            font-weight: 500;
+            color: #37474f;
+        }
+
+        /* --- FOOTER (Centered & White) --- */
+        .footer {
+            background-color: #37474f; /* Dark Background */
+            color: white; /* Text Color */
+            text-align: center; /* Center Alignment */
+            padding: 80px 20px;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer h2 {
+            color: white !important; /* Force White */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .footer p {
+            color: #cfd8dc;
+            text-align: center !important;
+            margin: 0 auto 30px auto;
+        }
+        .btn-back {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #ec407a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .btn-back:hover { background-color: white; color: #ec407a; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-brand">Suriyapriya S.</a>
+        <div class="nav-links">
+            <a href="index.html">Portfolio Home</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#optimization">Optimization</a>
+            <a href="#impact">Impact</a>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container" style="padding:0;">
+            <h1 class="project-title">Opioid Crisis Intervention</h1>
+            <div class="project-subtitle">A Predict-Then-Optimize Framework for Safe Consumption Sites</div>
+            <div class="header-meta">
+                <span style="margin: 0 15px;"><i class="fa fa-calendar"></i> Fall 2025</span>
+                <span style="margin: 0 15px;"><i class="fa fa-code"></i> Python, Gurobi, ARIMA</span>
+                <span style="margin: 0 15px;"><i class="fa fa-users"></i> Role: Project Lead</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="section" id="intro">
+            <div class="text-col">
+                <h2>Executive Summary & Context</h2>
+                <p>
+                    Allegheny County is facing a severe public health crisis driven by opioid overdoses. Fatal accidental overdoses have risen by <strong>107%</strong> between 2015 and 2017, outpacing national averages. To mitigate this, harm reduction strategies such as <strong>Safe Consumption Sites (SCS)</strong> are critical.
+                </p>
+                <div class="highlight-box">
+                    <strong>The Challenge:</strong> Establishing an SCS is resource-intensive. With a limited budget, where should a new site be placed to maximize its life-saving potential?
+                </div>
+                <p>
+                    This project employs a <strong>"Predict-Then-Optimize"</strong> framework. We first forecast future overdose events by ZIP code and then use mathematical optimization to select the ideal site location that covers the maximum number of predicted incidents.
+                </p>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Allegheny+County+Heatmap" class="img-placeholder">
+                <div class="caption">Figure 1: Geospatial heatmap of fatal overdoses (2015-2024), highlighting clusters in Pittsburgh and McKeesport.</div>
+            </div>
+        </div>
+
+        <div class="section" id="methodology">
+            <div class="img-col">
+                <img src="https://placehold.co/600x500/37474f/white?text=ARIMA+Forecast+Plot" class="img-placeholder">
+                <div class="caption">Figure 2: Time-series forecasting of fatal overdoses for high-risk ZIP codes.</div>
+            </div>
+            <div class="text-col">
+                <h2>Phase 1: Predicting Overdose Events</h2>
+                <p>
+                    We utilized historical overdose data from the Western Pennsylvania Regional Data Center (WPRDC). To capture localized trends, we moved beyond a county-wide model and developed granular forecasts.
+                </p>
+                <h3>Methodology:</h3>
+                <ul>
+                    <li><strong>Data Preparation:</strong> Aggregated 10 years of fatal overdose data into monthly time series for each of the 106 ZIP codes in Allegheny County.</li>
+                    <li><strong>Modeling:</strong> Trained <strong>106 individual ARIMA (AutoRegressive Integrated Moving Average)</strong> models. Parameters (p,d,q) were optimized for each ZIP code using grid search based on AIC scores.</li>
+                    <li><strong>Validation:</strong> The models were validated on the most recent 12 months of data to ensure they could accurately capture seasonal spikes and rising trends.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="optimization">
+            <div class="text-col">
+                <h2>Phase 2: Optimization (MCLP)</h2>
+                <p>
+                    With forecasts in hand, the next step was resource allocation. We formulated the problem as a <strong>Maximal Covering Location Problem (MCLP)</strong>.
+                </p>
+                <h3>Optimization Constraints:</h3>
+                <ul>
+                    <li><strong>Service Radius:</strong> We defined "coverage" as a 10-minute driving distance or reasonable walking distance, calculated using the <strong>Haversine formula</strong> to determine proximity between ZIP code centroids.</li>
+                    <li><strong>Objective Function:</strong> Maximize the total number of <em>predicted</em> fatal overdoses covered by the new site location.</li>
+                    <li><strong>Solver:</strong> Implemented the linear programming model using the <strong>Gurobi Optimizer</strong> in Python.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Why Gurobi?</strong> It allows for finding the globally optimal solution efficiently, ensuring we don't settle for a sub-optimal location based on heuristics.
+                </div>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/ec407a/white?text=Optimization+Map+Result" class="img-placeholder">
+                <div class="caption">Figure 3: Map showing the optimal new site location and its 10-mile coverage radius.</div>
+            </div>
+        </div>
+
+        <div class="section" id="impact">
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/37474f/white?text=Coverage+Impact+Chart" class="img-placeholder">
+                <div class="caption">Figure 4: Comparison of network coverage before and after the proposed intervention.</div>
+            </div>
+            <div class="text-col">
+                <h2>Results & Strategic Impact</h2>
+                <p>
+                    The optimization model identified <strong>McKeesport (ZIP 15133)</strong> as the optimal location for a new Safe Consumption Site. This area is currently an overdose hotspot with zero existing coverage.
+                </p>
+                <h3>Quantifiable Outcomes:</h3>
+                <ul>
+                    <li><strong>Coverage Increase:</strong> The new site would increase the total network coverage of fatal overdoses from <strong>23% to 33%</strong> (a 10 percentage point jump).</li>
+                    <li><strong>Lives Impacted:</strong> Based on our forecasts, this single site would cover an additional <strong>50 predicted fatal overdoses</strong> annually.</li>
+                    <li><strong>Policy Recommendation:</strong> We recommended a "Hub-and-Spoke" model, with Prevention Point Pittsburgh (PPP) as the central hub and a new satellite facility in McKeesport to serve the Mon Valley region.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h2>Ready to see more?</h2>
+        <p>Explore my other projects or get in touch.</p>
+        <a href="index.html" class="btn-back">Back to Portfolio</a>
+    </div>
+
+</body>
+</html>
