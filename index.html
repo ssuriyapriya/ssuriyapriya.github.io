@@ -4,8 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Suriyapriya Selvanathan | Healthcare Data Scientist</title>
+  
   <link rel="icon" href="assets/img/headshot-2.jpg" type="image/jpeg">
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   
@@ -21,6 +24,16 @@
     .logo { padding: 40px 0 20px 0; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px; }
     .profile-pic { border: 4px solid var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 130px; height: 130px; object-fit: cover; }
     @media only screen and (min-width : 993px) { header, main, footer { padding-left: 260px; } }
+
+    /* --- MOBILE NAV FIXES --- */
+    .brand-logo { 
+        font-weight: 800 !important; 
+        color: #ec407a !important; 
+        white-space: nowrap; /* Forces name to stay on one line */
+    }
+    @media only screen and (max-width : 600px) {
+        .brand-logo { font-size: 1.4rem !important; } /* Smaller font for mobile */
+    }
 
     /* --- TYPOGRAPHY --- */
     h1, h2, h3, h4, h5 { font-weight: 800; letter-spacing: -0.5px; color: var(--text-slate); margin-top: 0; }
@@ -95,7 +108,7 @@
   </style>
 </head>
 <body>
-  <nav class="hide-on-large-only white"><div class="nav-wrapper"><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" style="color: #ec407a;">menu</i></a><a href="#" class="brand-logo center" style="color: #ec407a; font-weight:800;">Suriyapriya S.</a></div></nav>
+  <nav class="hide-on-large-only white"><div class="nav-wrapper"><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" style="color: #ec407a;">menu</i></a><a href="#" class="brand-logo center">Suriyapriya S.</a></div></nav>
   <ul id="slide-out" class="side-nav fixed">
     <li class="logo"><img src="/assets/img/headshot-2.jpg" onerror="this.src='https://placehold.co/200x200?text=Photo'" class="circle profile-pic"></li>
     <li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#education">Education</a></li>
@@ -160,7 +173,7 @@
       <div class="row flex">
         <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-diabetes.png" onerror="this.src='https://placehold.co/600x300/37474f/white?text=Diabetes+Risk+AI'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Diabetes Risk Assessment</span><p>Built DSS using Gradient Boosting to predict 30-day hospital readmissions with 94.7% accuracy.</p><a href="project-diabetes.html" class="btn-case-study">View Full Report</a></div></div></div>
         <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-opioid.png" onerror="this.src='https://placehold.co/600x300/37474f/white?text=Opioid+Optimization'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Opioid Crisis Intervention</span><p>Predict-Then-Optimize framework utilizing 106 ARIMA models and Gurobi optimization.</p><a href="project-opioid.html" class="btn-case-study">View Full Report</a></div></div></div>
-        <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-nlp.png" onerror="this.src='https://placehold.co/600x300/ec407a/white?text=Multimodal+AI'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Multimodal AI for Notes</span><p>Dual-architecture (ViT + BERT) to abstract clinical concepts from unstructured EHR data.</p><a href="project-nlp.html" class="btn-case-study">View Full Report</a></div></div></div>
+        <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-nlp.png" onerror="this.src='https://placehold.co/600x300/546e7a/white?text=Multimodal+AI'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Multimodal AI for Notes</span><p>Dual-architecture (ViT + BERT) to abstract clinical concepts from unstructured EHR data.</p><a href="project-nlp.html" class="btn-case-study">View Full Report</a></div></div></div>
         <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-los.png" onerror="this.src='https://placehold.co/600x300/ec407a/white?text=LOS+Prediction'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Patient Length of Stay</span><p>XGBoost model (93.3% accuracy) and Power BI dashboard for discharge planning.</p><a href="project-los.html" class="btn-case-study">View Full Report</a></div></div></div>
         <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-botswana.png" onerror="this.src='https://placehold.co/600x300/37474f/white?text=Gamified+Nutrition'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Gamified Nutrition Intervention</span><p>Telemetry analysis of "Fooya!" mobile game to influence pediatric dietary choices.</p><a href="project-botswana.html" class="btn-case-study">View Full Report</a></div></div></div>
         <div class="col s12 m6 l6"><div class="card"><div class="card-image"><img src="/assets/img/project-icu.png" onerror="this.src='https://placehold.co/600x300/ec407a/white?text=Synthetic+ICU+Data'"></div><div class="card-content"><span class="card-title" style="font-weight: 800; color: #ec407a;">Synthetic Data for ICU</span><p>Autoencoder-based system to generate synthetic patient data and address scarcity.</p><a href="project-icu.html" class="btn-case-study">View Full Report</a></div></div></div>
