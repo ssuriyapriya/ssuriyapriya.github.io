@@ -236,39 +236,39 @@
             <div class="text-col">
                 <h2>Executive Summary</h2>
                 <p>
-                    [cite_start]Hospital readmissions among diabetic patients present a critical challenge, with national rates exceeding <strong>11.7%</strong>[cite: 17]. [cite_start]These avoidable returns strain nursing capacity, incur financial penalties under Medicare's HRRP (up to 3% of reimbursements), and expose patients to hospital-acquired complications[cite: 45].
+                    Hospital readmissions among diabetic patients present a critical challenge, with national rates exceeding <strong>11.7%</strong>. These avoidable returns strain nursing capacity, incur financial penalties under Medicare's HRRP (up to 3% of reimbursements), and expose patients to hospital-acquired complications.
                 </p>
                 <div class="highlight-box">
-                    <strong>The Problem:</strong> Currently, physicians rely on subjective judgment to assess readmission risk. [cite_start]Important indicators like HbA1c levels and medication changes are often underutilized, leading to inconsistent discharge planning[cite: 80].
+                    <strong>The Problem:</strong> Currently, physicians rely on subjective judgment to assess readmission risk. Important indicators like HbA1c levels and medication changes are often underutilized, leading to inconsistent discharge planning.
                 </div>
                 <p>
                     We developed a <strong>Data-Driven Decision Support System (DSS)</strong> that integrates patient demographics, clinical history, and treatment data to forecast 30-day readmission risk, enabling targeted interventions before discharge.
                 </p>
             </div>
             <div class="img-col">
-                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Current+vs+Future+Process+Model" class="img-placeholder">
-                <div class="caption">Figure 1: Transitioning from ad-hoc judgment to Automated Risk Scoring.</div>
+                <img src="assets/img/process-model.png" class="img-placeholder" alt="Process Model Diagram">
+                <div class="caption">Figure 1: Current vs. Future Process Model: Transitioning to Automated Risk Scoring.</div>
             </div>
         </div>
 
         <div class="section" id="solution">
             <div class="img-col">
-                <img src="https://placehold.co/600x500/37474f/white?text=Feature+Engineering+Pipeline" class="img-placeholder">
-                <div class="caption">Figure 2: Data pipeline transforming raw EHR data into predictive features.</div>
+                <img src="assets/img/erd.png" class="img-placeholder" alt="Entity Relationship Diagram">
+                <div class="caption">Figure 2: Entity Relationship Diagram (ERD) showing the database schema and data relationships.</div>
             </div>
             <div class="text-col">
                 <h2>Methodology & Data Engineering</h2>
                 <p>
-                    [cite_start]We utilized the "Diabetes 130-US Hospitals" dataset (1999-2008) from the UCI Machine Learning Repository[cite: 163]. The pipeline involved extensive preprocessing to handle missing data and class imbalance.
+                    We utilized the "Diabetes 130-US Hospitals" dataset (1999-2008) from the UCI Machine Learning Repository. The pipeline involved extensive preprocessing to handle missing data and class imbalance.
                 </p>
                 <h3>Key Features Extracted</h3>
                 <ul>
                     <li><strong>Demographics:</strong> Age group, Gender, Weight availability.</li>
-                    [cite_start]<li><strong>Utilization:</strong> Number of Inpatient, Emergency, and Outpatient visits[cite: 171].</li>
+                    <li><strong>Utilization:</strong> Number of Inpatient, Emergency, and Outpatient visits.</li>
                     <li><strong>Clinical:</strong> HbA1c results, Time in Hospital, Number of Lab Procedures, Number of Medications.</li>
                 </ul>
                 <h3>Model Selection</h3>
-                <p>We evaluated Logistic Regression, Random Forest, and Gradient Boosting. [cite_start]<strong>Gradient Boosting</strong> was selected as the champion model for its superior performance (Validation AUC: 0.694) and ability to handle non-linear interactions[cite: 127].</p>
+                <p>We evaluated Logistic Regression, Random Forest, and Gradient Boosting. <strong>Gradient Boosting</strong> was selected as the champion model for its superior performance (Validation AUC: 0.694) and ability to handle non-linear interactions.</p>
             </div>
         </div>
 
@@ -280,33 +280,33 @@
                 </p>
                 <h3>Case Study: Patient 1303</h3>
                 <p>
-                    Patient 1303 had high utilization (8 inpatient visits, 10 emergency visits). [cite_start]The model correctly identified this patient as <strong>High Risk</strong> with a <strong>57.49%</strong> readmission probability[cite: 252].
+                    Patient 1303 had high utilization (8 inpatient visits, 10 emergency visits). The model correctly identified this patient as <strong>High Risk</strong> with a <strong>57.49%</strong> readmission probability.
                 </p>
                 <div class="highlight-box">
-                    [cite_start]<strong>Critical Insight:</strong> Our sensitivity analysis indicated an increase in readmission probability of <strong>~2.1%</strong> for every day decrease in length of stay, highlighting the danger of premature discharge[cite: 24].
+                    <strong>Critical Insight:</strong> Our sensitivity analysis indicated an increase in readmission probability of <strong>~2.1%</strong> for every day decrease in length of stay, highlighting the danger of premature discharge.
                 </div>
             </div>
             <div class="img-col">
-                <img src="https://placehold.co/600x400/ec407a/white?text=Sensitivity+Analysis+Chart" class="img-placeholder">
-                <div class="caption">Figure 3: Impact of Hospital Utilization on Predicted Risk Probability.</div>
+                <img src="assets/img/whatif-analysis.png" class="img-placeholder" alt="Sensitivity Analysis Chart">
+                <div class="caption">Figure 3: 'What-If' Analysis dashboard visualizing impact of utilization on risk.</div>
             </div>
         </div>
 
         <div class="section">
             <div class="img-col">
-                <img src="https://placehold.co/600x400/37474f/white?text=Streamlit+Prediction+UI" class="img-placeholder">
-                <div class="caption">Figure 4: The 'Prediction Tab' allows clinicians to input data and get real-time risk scores.</div>
+                <img src="assets/img/cdss-interface.png" class="img-placeholder" alt="CDSS Interface">
+                <div class="caption">Figure 4: The CDSS Interface allows clinicians to input data and get real-time risk scores.</div>
             </div>
             <div class="text-col">
                 <h2>Interface & Implementation (PEIT)</h2>
                 <p>
-                    We deployed the model using a <strong>Streamlit</strong> web interface backed by a <strong>PostgreSQL</strong> database. [cite_start]The design prioritizes "Actionable Intelligence"[cite: 132].
+                    We deployed the model using a <strong>Streamlit</strong> web interface backed by a <strong>PostgreSQL</strong> database. The design prioritizes "Actionable Intelligence".
                 </p>
                 <h3>Implementation Strategy (PEIT Framework)</h3>
                 <ul>
-                    [cite_start]<li><strong>People:</strong> Addressed "Alert Fatigue" by calibrating thresholds so only high-risk patients trigger alerts[cite: 212].</li>
+                    <li><strong>People:</strong> Addressed "Alert Fatigue" by calibrating thresholds so only high-risk patients trigger alerts.</li>
                     <li><strong>Process:</strong> Defined clear SLAs for data ingestion to fit within the discharge workflow.</li>
-                    [cite_start]<li><strong>Technology:</strong> Containerized components (Docker) for scalable deployment across hospital networks[cite: 207].</li>
+                    <li><strong>Technology:</strong> Containerized components (Docker) for scalable deployment across hospital networks.</li>
                 </ul>
             </div>
         </div>
