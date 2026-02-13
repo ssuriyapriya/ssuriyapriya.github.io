@@ -58,6 +58,53 @@
     footer { background-color: var(--sidebar-pink); padding: 40px 0; text-align: center; color: var(--text-slate); margin-top: 50px; }
     .social-icon { font-size: 2rem; color: var(--text-slate); margin: 0 15px; transition: color 0.3s; } .social-icon:hover { color: var(--primary-rose); }
     .row.flex { display: flex; flex-wrap: wrap; }
+
+    /* --- CHATBOT STYLES --- */
+    #chat-widget-btn {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 60px; height: 60px;
+      background-color: var(--primary-rose);
+      color: white; border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(236, 64, 122, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 9999;
+      transition: transform 0.3s;
+    }
+    #chat-widget-btn:hover { transform: scale(1.1); }
+    #chat-box {
+      position: fixed; bottom: 100px; right: 30px;
+      width: 350px; height: 450px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+      display: none; flex-direction: column;
+      z-index: 9999; overflow: hidden;
+      border: 1px solid #fce4ec;
+    }
+    .chat-header {
+      background: var(--primary-rose);
+      color: white; padding: 15px;
+      font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .chat-messages {
+      flex: 1; padding: 15px;
+      overflow-y: auto; background: #fafafa;
+    }
+    .chat-input-area {
+      padding: 10px; border-top: 1px solid #eee;
+      display: flex; background: white;
+    }
+    #user-input {
+      flex: 1; border: none; outline: none; padding: 10px;
+    }
+    #send-btn {
+      background: transparent; border: none; color: var(--primary-rose);
+      font-weight: 700; cursor: pointer; padding: 0 15px;
+    }
+    .message { margin-bottom: 10px; max-width: 80%; padding: 10px; border-radius: 10px; font-size: 0.9rem; }
+    .bot-msg { background: #fce4ec; color: #37474f; align-self: flex-start; border-bottom-left-radius: 0; }
+    .user-msg { background: var(--primary-rose); color: white; align-self: flex-end; margin-left: auto; border-bottom-right-radius: 0; }
   </style>
 </head>
 <body>
@@ -74,12 +121,8 @@
       <div class="container"><div class="row"><div class="col s12 m10 offset-m1 center-align">
         <h2 style="font-weight: 800; color: #37474f;">Hi, I'm</h2><h1 class="intro-name">Suriyapriya.</h1>
         <h3 class="intro-role">Healthcare Data Scientist | Product Manager | Strategist</h3>
-        <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #546e7a;">I build deployable data solutions that optimize clinical operations. <b>Bridging the gap between complex healthcare space and actionable tech strategies.</b></p>
-        <div style="margin: 30px 0;">
-            <a href="https://linkedin.com/in/suriyapriya-s" class="social-icon" target="_blank"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/ssuriyapriya" class="social-icon" target="_blank"><i class="fa fa-github"></i></a>
-            <a href="mailto:sselvana@andrew.cmu.edu" class="social-icon"><i class="fa fa-envelope"></i></a>
-        </div>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #546e7a;">I build deployable AI solutions that optimize clinical operations. <b>Bridging the gap between complex healthcare data and actionable strategy.</b></p>
+        <div style="margin: 30px 0;"><a href="https://linkedin.com/in/suriyapriya-s" class="social-icon"><i class="fa fa-linkedin"></i></a><a href="https://github.com/ssuriyapriya" class="social-icon"><i class="fa fa-github"></i></a><a href="mailto:sselvana@andrew.cmu.edu" class="social-icon"><i class="fa fa-envelope"></i></a></div>
         <div><a href="#experience" class="btn-custom btn-fill">Why Hire Me?</a><a href="#contact" class="btn-custom btn-outline">Let's Talk</a></div>
       </div></div></div>
     </section>
@@ -89,7 +132,7 @@
         I am a driven and dedicated Master's student in <b>Health Care Analytics and IT</b> at Carnegie Mellon University with a strong interest in leveraging artificial intelligence, data science, and machine learning techniques to revolutionize the healthcare industry.
       </p>
       <p style="font-size: 1.1rem; margin-bottom: 20px;">
-        <b>Bridging the Gap:</b> My background is unique. With a <b>Bachelor’s in Biomedical Engineering</b>, I fundamentally understand the system: clinical workflows, physiology, and the challenges faced by providers and payers. I combine this domain expertise with advanced data science skills to solve complex problems like <b>interoperability, resource allocation, and value-based care</b>.
+        <b>Bridging the Gap:</b> My background is unique. With a <b>Bachelor’s in Biomedical Engineering</b>, I fundamentally understand the "system"—clinical workflows, physiology, and the challenges faced by providers and payers. I combine this domain expertise with advanced data science skills to solve complex problems like <b>interoperability, resource allocation, and value-based care</b>.
       </p>
       <p style="font-size: 1.1rem;">
         With professional experience at <b>Highmark Health</b>, <b>Allegheny Health Network</b>, and <b>Latent View Analytics</b>, I don't just build models; I build solutions that facilitate medical decision-making and enhance patient outcomes across the entire healthcare continuum.
@@ -137,7 +180,78 @@
         </div>
     </div></footer>
   </main>
+
+  <div id="chat-widget-btn"><i class="fa fa-comment" style="font-size: 24px;"></i></div>
+  <div id="chat-box">
+    <div class="chat-header">
+      <span><i class="fa fa-user-circle"></i> Suriya's Assistant</span>
+      <span style="cursor:pointer;" onclick="toggleChat()">×</span>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="message bot-msg">Hi! I'm an AI assistant. Ask me why you should hire Suriyapriya!</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="user-input" placeholder="Type a message..." onkeypress="handleEnter(event)">
+      <button id="send-btn" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+    </div>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script>$(document).ready(function(){$('.button-collapse').sideNav({menuWidth: 260, edge: 'left', closeOnClick: true, draggable: true}); $('.scrollspy').scrollSpy({scrollOffset: 60});});</script>
+  <script>
+    $(document).ready(function(){$('.button-collapse').sideNav({menuWidth: 260, edge: 'left', closeOnClick: true, draggable: true}); $('.scrollspy').scrollSpy({scrollOffset: 60});});
+    
+    // Chatbot Logic
+    const chatBtn = document.getElementById('chat-widget-btn');
+    const chatBox = document.getElementById('chat-box');
+    const messages = document.getElementById('chat-messages');
+    
+    chatBtn.addEventListener('click', toggleChat);
+    function toggleChat() {
+      if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+        chatBox.style.display = 'flex';
+      } else {
+        chatBox.style.display = 'none';
+      }
+    }
+
+    function handleEnter(e) { if(e.key === 'Enter') sendMessage(); }
+
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const text = input.value.trim().toLowerCase();
+      if(text === "") return;
+      
+      // User Msg
+      appendMessage(input.value, 'user-msg');
+      input.value = '';
+
+      // AI Logic
+      setTimeout(() => {
+        let reply = "I'm not sure about that, but Suriyapriya would love to discuss it! Contact her at sselvana@andrew.cmu.edu";
+        
+        if (text.includes("hire") || text.includes("why") || text.includes("value")) {
+          reply = "You should hire Suriyapriya because she uniquely bridges **Biomedical Engineering** and **Data Science**. She understands the clinical 'system' (Providers/Payers) and uses technical skills (Python, SQL, ML) to solve real problems like interoperability and resource allocation.";
+        } else if (text.includes("project") || text.includes("portfolio")) {
+          reply = "She has led high-impact projects like the **Diabetes Risk System** (94% accuracy), an **Opioid Intervention Model** using Gurobi, and a **Gamified Nutrition study**. Check the 'Projects' section!";
+        } else if (text.includes("skills") || text.includes("tech")) {
+          reply = "Her technical arsenal includes **Python (Pandas, Scikit-learn), SQL, Tableau, AWS, and Gurobi**. She specializes in Predictive Analytics and Machine Learning.";
+        } else if (text.includes("contact") || text.includes("email")) {
+          reply = "You can reach her at **sselvana@andrew.cmu.edu** or via LinkedIn!";
+        } else if (text.includes("hello") || text.includes("hi")) {
+          reply = "Hello! Ask me about Suriyapriya's skills, projects, or why she's a great fit for your team.";
+        }
+
+        appendMessage(reply, 'bot-msg');
+      }, 500);
+    }
+
+    function appendMessage(text, className) {
+      const div = document.createElement('div');
+      div.className = `message ${className}`;
+      div.innerHTML = text; // allow bold tags
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
 </body>
 </html>
