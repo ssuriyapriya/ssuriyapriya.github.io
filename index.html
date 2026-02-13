@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
@@ -13,28 +17,39 @@
   <title>Suriyapriya Selvanathan | Healthcare Data Scientist</title>
 
   <style>
-    /* 1. Theme Colors: Pastel Pink & Charcoal */
-    /* Overriding the "Teal" class to be Pink/Rose */
+    /* --- COLOR PALETTE (Color Blind Friendly) --- */
+    :root {
+        --primary-magenta: #D35FB7;
+        --accent-yellow: #FEFE62;
+        --dark-text: #212121;
+        --light-bg: #fdfdfd;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif; /* Global Bold Font */
+        color: var(--dark-text);
+        background-color: var(--light-bg);
+    }
+
+    /* Overriding Materialize Colors */
     .teal {
-        background-color: #f8bbd0 !important; /* Pastel Pink Backgrounds */
-        color: #4a4a4a !important; /* Dark text on pink backgrounds */
+        background-color: var(--primary-magenta) !important;
     }
     .teal-text {
-        color: #ec407a !important; /* Darker Rose for Text Links */
+        color: var(--primary-magenta) !important;
     }
-    /* Making text dark grey instead of light brown */
     .brown-text {
-        color: #212121 !important; 
+        color: #424242 !important; /* Dark Grey for readability */
     }
-    
-    /* 2. Your Name - BOLD and Dark */
-    .caption h2 {
-        font-weight: 800 !important; /* Extra Bold */
-        color: #333 !important; /* Dark Grey */
-        text-transform: none !important;
+
+    /* HEADERS - EXTRA BOLD */
+    h1, h2, h3, h4, h5 {
+        font-weight: 900 !important; /* Maximum Boldness */
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
-    
-    /* 3. Centering the Intro */
+
+    /* INTRO SECTION */
     #intro .container {
       display: flex;
       flex-direction: column;
@@ -45,43 +60,94 @@
     }
     #intro .col-md-9 { width: 100%; margin: 0 !important; }
     
-    /* 4. Buttons - Pink with Dark Text */
+    /* Intro Text Styling */
+    .caption h2 {
+        color: var(--dark-text) !important;
+        font-size: 3.5rem;
+    }
+    .caption .highlight-name {
+        color: var(--primary-magenta);
+        background: var(--accent-yellow); /* Yellow Highlight behind name */
+        padding: 0 10px;
+    }
+
+    /* BUTTONS - High Contrast */
     .btn-floating {
-        background-color: #ec407a !important; /* Darker pink for buttons */
+        background-color: var(--primary-magenta) !important;
     }
     .btn-floating:hover {
-        background-color: #d81b60 !important;
+        background-color: var(--accent-yellow) !important;
+        /* Icon color change on hover for visibility */
     }
-    
-    /* 5. Skill Icons */
+    .btn-floating:hover i {
+        color: var(--primary-magenta) !important;
+    }
+
+    .readme, .contactme {
+        padding: 15px 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: 10px;
+        display: inline-block;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    .readme {
+        border: 3px solid var(--primary-magenta);
+        color: var(--primary-magenta);
+    }
+    .contactme {
+        background-color: var(--primary-magenta);
+        color: white;
+    }
+    .contactme:hover {
+        background-color: var(--accent-yellow);
+        color: var(--dark-text);
+    }
+
+    /* SKILLS SECTION - BOLD */
+    .skill-card-title {
+        font-weight: 800;
+        color: var(--primary-magenta);
+        margin-bottom: 20px;
+    }
     .skill-icon {
         height: 60px;
         width: 60px;
         margin-bottom: 10px;
     }
-
-    /* 6. Footer - Darker Rose */
-    footer {
-        background-color: #ad1457; /* Deep Pink/Red */
-        color: white;
-        padding: 20px 0;
-        text-align: center;
+    .skill-name {
+        font-weight: 700; /* Bold text for skill names */
+        font-size: 1.1rem;
     }
-    footer a { color: #ffcdd2; font-weight: bold; }
 
-    /* Fix for Intro Background Overlay */
-    /* Making the background lighter so text pops */
-    .overlay {
-        background-color: rgba(255, 255, 255, 0.85) !important; 
-    }
-    
-    /* Navbar override */
+    /* NAVBAR */
     nav {
         background-color: white !important;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     nav ul a {
-        color: #333 !important;
+        color: var(--dark-text) !important;
+        font-weight: 700;
+    }
+
+    /* FOOTER */
+    footer {
+        background-color: #212121;
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+    }
+    .cb-note {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        color: var(--accent-yellow);
+        font-weight: bold;
+    }
+
+    /* FIX FOR BROKEN IMAGES (Object Fit) */
+    .card-image img {
+        object-fit: cover;
     }
   </style>
 </head>
@@ -93,16 +159,15 @@
       <li class="logo">
         <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
           class="brand-logo grey-blue-text">
-          <img src="/assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar">
+          <img src="/assets/img/passport-new.jpg" onerror="this.src='https://placehold.co/200x200?text=Photo'" class="circle img-responsive profile-pic" alt="avatar">
         </a>
       </li>
-      <li class="bold"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
-      <li class="bold"><a href="#experience" class="waves-effect waves-dark teal-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
-      <li class="bold"><a href="#projects" class="waves-effect waves-dark teal-text"><i class="mdi-av-my-library-books small"></i><span>Projects</span></a></li>
-      <li class="bold"><a href="#skills" class="waves-effect waves-dark teal-text"><i class="mdi-action-assessment small"></i><span>Skills</span></a></li>
-      <li class="bold"><a href="#education" class="waves-effect waves-dark teal-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
-      <li class="bold"><a href="#contact" class="waves-effect waves-dark teal-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-      <li class="bold"><a href="#" target="_blank" class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a></li>
+      <li class="bold"><a href="#about" class="waves-effect waves-dark teal-text">About</a></li>
+      <li class="bold"><a href="#experience" class="waves-effect waves-dark teal-text">Experience</a></li>
+      <li class="bold"><a href="#projects" class="waves-effect waves-dark teal-text">Projects</a></li>
+      <li class="bold"><a href="#skills" class="waves-effect waves-dark teal-text">Skills</a></li>
+      <li class="bold"><a href="#education" class="waves-effect waves-dark teal-text">Education</a></li>
+      <li class="bold"><a href="#contact" class="waves-effect waves-dark teal-text">Contact</a></li>
     </ul>
   </nav>
 
@@ -126,16 +191,17 @@
 
   <main>
     <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
       <div class="container">
         <div class="col-md-9">
           <div class="caption">
-            <h2>Hi, I'm <span style="color: #ec407a;">Suriyapriya Selvanathan.</span></h2>
+            <h2>Hi, I'm <span class="highlight-name">Suriyapriya.</span></h2>
             
-            <h5 style="color:#444; font-weight: 600;">A <span class="typing" style="font-weight: 600; color: #ad1457;"></span></h5>
+            <h5 style="color:#444; font-weight: 700; margin-top: 20px;">
+                A <span class="typing" style="color: var(--primary-magenta);"></span>
+            </h5>
             
-            <h5 style="color:#555; max-width: 800px; margin: 20px auto; line-height: 1.6;">
-                Passionate about bridging the gap between healthcare and technology through data analytics.
+            <h5 style="color:#555; max-width: 800px; margin: 30px auto; font-weight: 500;">
+                Bridging the gap between <b>healthcare</b> and <b>technology</b> through data analytics.
             </h5>
           </div>
           <div class="social">
@@ -147,8 +213,8 @@
             </a>
           </div>
           <div class='buttons'>
-            <a href="#about" class="readme" style="color:#ec407a; border: 2px solid #ec407a; font-weight: bold;">Read More</a>
-            <a href="#contact" class="contactme" style="background-color:#ec407a; color:white; font-weight: bold;">Contact Me</a>
+            <a href="#about" class="readme">Read More</a>
+            <a href="#contact" class="contactme">Contact Me</a>
           </div>
         </div>
       </div>
@@ -158,10 +224,10 @@
       <h3 class="page-title white-text teal">About</h3>
       <div class="container flow-text">
         <p>
-          I am a Master of Science student in Health Care Analytics and IT at <b>Carnegie Mellon University</b> (Class of 2026). My work sits at the intersection of Data Science, Product Management, and Healthcare Strategy.
+          I am a Master of Science student in <b>Health Care Analytics and IT</b> at Carnegie Mellon University (Class of 2026). My work sits at the intersection of Data Science, Product Management, and Healthcare Strategy.
         </p>
         <p>
-          With experience at <b>Highmark Health</b>, <b>Allegheny Health Network</b>, and <b>Latent View Analytics</b>, I have successfully managed large-scale projects and deployed machine learning models that optimize clinical operations and financial performance.
+          With experience at <b>Highmark Health</b>, <b>Allegheny Health Network</b>, and <b>Latent View Analytics</b>, I have successfully managed large-scale projects and deployed machine learning models that optimize clinical operations.
         </p>
       </div>
     </section>
@@ -173,13 +239,13 @@
           <div class="card-content">
             <div class="row">
               <div class="col s12 m2">
-                <img alt="Highmark logo" src="/assets/img/highmark-logo.png" class="responsive-img center-block" />
+                <img src="/assets/img/highmark-logo.png" onerror="this.src='https://placehold.co/100x100?text=Highmark'" class="responsive-img center-block" alt="Highmark"/>
               </div>
               <div class="col s12 m10">
                 <p><span class="card-title"><a href="#" class="teal-text hoverline">Highmark Health / AHN</a></span></p>
               </div>
             </div>
-            <div class="role brown-text text-darken-2">Capstone Project Manager</div>
+            <div class="role brown-text">Capstone Project Manager</div>
             <ul>
               <li>Leading a cross-functional team to model longitudinal cancer cost trajectories.</li>
               <li>Developing a resource allocation framework by synthesizing administrative claims data.</li>
@@ -192,13 +258,13 @@
           <div class="card-content">
             <div class="row">
               <div class="col s12 m2">
-                <img alt="Safety21 logo" src="/assets/img/safety21-logo.png" class="responsive-img center-block" />
+                <img src="/assets/img/safety21-logo.png" onerror="this.src='https://placehold.co/100x100?text=Safety21'" class="responsive-img center-block" alt="Safety21"/>
               </div>
               <div class="col s12 m10">
                 <p><span class="card-title"><a href="#" class="teal-text hoverline">Safety21 UTC (US DOT)</a></span></p>
               </div>
             </div>
-            <div class="role brown-text text-darken-2">Transportation Fellow</div>
+            <div class="role brown-text">Transportation Fellow</div>
             <ul>
               <li>Leading research dissemination and stakeholder engagement for US DOT initiatives.</li>
               <li>Synthesizing complex technical findings into executive summaries for policy makers.</li>
@@ -211,13 +277,13 @@
             <div class="card-content">
               <div class="row">
                 <div class="col s12 m2">
-                  <img alt="LatentView logo" src="/assets/img/latentview-logo.png" class="responsive-img center-block" />
+                  <img src="/assets/img/latentview-logo.png" onerror="this.src='https://placehold.co/100x100?text=LatentView'" class="responsive-img center-block" alt="LatentView"/>
                 </div>
                 <div class="col s12 m10">
                   <p><span class="card-title"><a href="#" class="teal-text hoverline">Latent View Analytics</a></span></p>
                 </div>
               </div>
-              <div class="role brown-text text-darken-2">Data Scientist</div>
+              <div class="role brown-text">Data Scientist</div>
               <ul>
                 <li>Analyzed 2M+ patient records to identify predictors of disease progression.</li>
                 <li>Deployed ML models improving high-risk candidate targeting by 25%.</li>
@@ -225,7 +291,6 @@
             </div>
             <div class="card-action"><span>Jun 2023 - Jul 2024 | India</span></div>
           </div>
-
       </div>
     </section>
 
@@ -236,7 +301,7 @@
           <div class="col s12 m6 l6">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Opioid Project" src="/assets/img/project-opioid.png" style="height: 100%; width: 100%" class="activator" />
+                <img src="/assets/img/project-opioid.png" onerror="this.src='https://placehold.co/600x400/D35FB7/white?text=Opioid+Intervention'" class="activator" alt="Opioid Project" />
               </div>
               <div class="card-content">
                 <span class="card-title activator teal-text hoverline">Opioid Crisis Intervention<i class="mdi-navigation-more-vert right"></i></span>
@@ -255,7 +320,7 @@
           <div class="col s12 m6 l6">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Diabetes Project" src="/assets/img/project-diabetes.png" style="height: 100%; width: 100%" class="activator" />
+                 <img src="/assets/img/project-diabetes.png" onerror="this.src='https://placehold.co/600x400/FEFE62/black?text=Diabetes+AI+Model'" class="activator" alt="Diabetes Project" />
               </div>
               <div class="card-content">
                 <span class="card-title activator teal-text hoverline">Diabetes Risk AI<i class="mdi-navigation-more-vert right"></i></span>
@@ -280,31 +345,31 @@
         
         <div class="card">
           <div class="card-content">
-            <h4 class="brown-text light">Languages & Databases</h4>
+            <h4 class="skill-card-title text-center" style="text-align: center;">Languages & Databases</h4>
             <div class="row text-center">
               <div class="col s4 m2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-icon" alt="Python"/>
-                <br>Python
+                <br><span class="skill-name">Python</span>
               </div>
               <div class="col s4 m2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-icon" alt="SQL"/>
-                <br>SQL
+                <br><span class="skill-name">SQL</span>
               </div>
               <div class="col s4 m2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" class="skill-icon" alt="R"/>
-                <br>R
+                <br><span class="skill-name">R</span>
               </div>
               <div class="col s4 m2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="skill-icon" alt="PostgreSQL"/>
-                <br>PostgreSQL
+                <br><span class="skill-name">Postgres</span>
               </div>
               <div class="col s4 m2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-icon" alt="HTML5"/>
-                <br>HTML5
+                <br><span class="skill-name">HTML5</span>
               </div>
               <div class="col s4 m2">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-icon" alt="CSS3"/>
-                <br>CSS3
+                <br><span class="skill-name">CSS3</span>
               </div>
             </div>
           </div>
@@ -312,31 +377,31 @@
 
         <div class="card">
             <div class="card-content">
-              <h4 class="brown-text light">Data Science & BI</h4>
+              <h4 class="skill-card-title" style="text-align: center;">Data Science & BI</h4>
               <div class="row text-center">
                 <div class="col s4 m2">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" class="skill-icon" alt="Pandas"/>
-                  <br>Pandas
+                  <br><span class="skill-name">Pandas</span>
                 </div>
                 <div class="col s4 m2">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" class="skill-icon" alt="Numpy"/>
-                  <br>NumPy
+                  <br><span class="skill-name">NumPy</span>
                 </div>
                 <div class="col s4 m2">
                   <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" class="skill-icon" alt="Tableau"/>
-                  <br>Tableau
+                  <br><span class="skill-name">Tableau</span>
                 </div>
                 <div class="col s4 m2">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="skill-icon" alt="Tensorflow"/>
-                    <br>TensorFlow
+                    <br><span class="skill-name">TensorFlow</span>
                 </div>
                 <div class="col s4 m2">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-icon" alt="Git"/>
-                    <br>Git
+                    <br><span class="skill-name">Git</span>
                 </div>
                 <div class="col s4 m2">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="skill-icon" alt="AWS"/>
-                    <br>AWS
+                    <br><span class="skill-name">AWS</span>
                 </div>
               </div>
             </div>
@@ -374,15 +439,15 @@
       <h3 class="page-title white-text teal">Contact</h3>
       <div class="container">
         <p>
-          <a href="mailto:sselvana@andrew.cmu.edu" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-envelope"></i></a>
+          <a href="mailto:sselvana@andrew.cmu.edu" class="btn-floating btn-large waves-effect waves-light tooltipped"><i class="fa fa-envelope"></i></a>
           <a href="mailto:sselvana@andrew.cmu.edu" class="hoverline" style="color: #333; font-weight: bold; margin-left: 10px;">sselvana@andrew.cmu.edu</a>
         </p>
         <p>
-          <a href="https://github.com/ssuriyapriya" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i></a>
+          <a href="https://github.com/ssuriyapriya" class="btn-floating btn-large waves-effect waves-light tooltipped"><i class="fa fa-github"></i></a>
           <a href="https://github.com/ssuriyapriya" class="hoverline" style="color: #333; font-weight: bold; margin-left: 10px;">github.com/ssuriyapriya</a>
         </p>
         <p>
-          <a href="https://linkedin.com/in/suriyapriya-s" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-linkedin"></i></a>
+          <a href="https://linkedin.com/in/suriyapriya-s" class="btn-floating btn-large waves-effect waves-light tooltipped"><i class="fa fa-linkedin"></i></a>
           <a href="https://linkedin.com/in/suriyapriya-s" class="hoverline" style="color: #333; font-weight: bold; margin-left: 10px;">linkedin.com/in/suriyapriya-s</a>
         </p>
       </div>
@@ -393,9 +458,10 @@
     <div class="container">
         <p>© 2026 Suriyapriya Selvanathan | Made with <i class="fa fa-heart" aria-hidden="true"></i></p>
         <div style="font-size: 1.5rem;">
-            <a href="https://linkedin.com/in/suriyapriya-s" target="_blank"><i class="fa fa-linkedin"></i></a> &nbsp;
-            <a href="https://github.com/ssuriyapriya" target="_blank"><i class="fa fa-github"></i></a>
+            <a href="https://linkedin.com/in/suriyapriya-s" target="_blank" style="color:white"><i class="fa fa-linkedin"></i></a> &nbsp;
+            <a href="https://github.com/ssuriyapriya" target="_blank" style="color:white"><i class="fa fa-github"></i></a>
         </div>
+        <p class="cb-note">Designed with a Color-Blind Friendly Palette (<span style="color:#D35FB7">#D35FB7</span> & <span style="color:#FEFE62">#FEFE62</span>)</p>
     </div>
   </footer>
 
