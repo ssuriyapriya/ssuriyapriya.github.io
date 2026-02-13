@@ -4,330 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synthetic ICU Data Generation | Suriyapriya S.</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
     <style>
-        /* --- GLOBAL STYLES --- */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #546e7a; /* Slate Grey Text */
-            background-color: #fafafa; /* Off-white background */
-            line-height: 1.8;
-        }
-
-        /* --- HEADER --- */
-        .project-header {
-            background-color: #fce4ec; /* Subtle Pink Background */
-            padding: 100px 20px;
-            text-align: center;
-            border-bottom: 6px solid #ec407a; /* Hot Pink Border */
-        }
-        .project-title {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #37474f; /* Dark Slate */
-            margin: 0;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-        .project-subtitle {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #ec407a; /* Hot Pink */
-            margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .header-meta {
-            margin-top: 30px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #78909c;
-        }
-
-        /* --- NAVIGATION --- */
-        .nav-bar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 20px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* [Reuse Same Styles from Previous Files] */
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; color: #546e7a; background-color: #fafafa; line-height: 1.8; }
+        .project-header { background-color: #fce4ec; padding: 100px 20px; text-align: center; border-bottom: 6px solid #ec407a; }
+        .project-title { font-size: 3rem; font-weight: 900; color: #37474f; margin: 0; letter-spacing: -1px; text-transform: uppercase; }
+        .project-subtitle { font-size: 1.3rem; font-weight: 600; color: #ec407a; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .header-meta { margin-top: 30px; font-size: 1rem; font-weight: 500; color: #78909c; }
+        .nav-bar { background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 20px 40px; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
         .nav-brand { font-weight: 800; font-size: 1.2rem; color: #ec407a; text-decoration: none; }
-        .nav-links a {
-            color: #37474f;
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
+        .nav-links a { color: #37474f; text-decoration: none; margin-left: 30px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: #ec407a; }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* --- SECTIONS (ALTERNATE LAYOUT) --- */
-        .section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 100px;
-            gap: 60px;
-        }
-        
-        /* Alternate: Even sections flip order */
-        .section:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .text-col {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .img-col {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        /* --- TYPOGRAPHY --- */
-        h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #ec407a; /* Hot Pink Topic Headings */
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #37474f;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        .section { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 100px; gap: 60px; }
+        .section:nth-child(even) { flex-direction: row-reverse; }
+        .text-col { flex: 1; min-width: 300px; }
+        .img-col { flex: 1; min-width: 300px; }
+        h2 { font-size: 2rem; font-weight: 800; color: #ec407a; margin-bottom: 25px; position: relative; display: inline-block; text-transform: uppercase; }
+        h3 { font-size: 1.3rem; font-weight: 700; color: #37474f; margin-top: 30px; margin-bottom: 15px; }
         p { margin-bottom: 20px; text-align: justify; font-size: 1.05rem; }
-        
         ul { list-style: none; padding: 0; }
-        li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-            font-size: 1.05rem;
-        }
-        li::before {
-            content: "•";
-            color: #ec407a;
-            font-weight: bold;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -5px;
-        }
-
-        /* --- IMAGES --- */
-        .img-placeholder {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(236, 64, 122, 0.15); /* Pink shadow */
-            transition: transform 0.3s;
-            border: 4px solid white;
-        }
+        li { margin-bottom: 15px; padding-left: 25px; position: relative; font-size: 1.05rem; }
+        li::before { content: "•"; color: #ec407a; font-weight: bold; font-size: 1.5rem; position: absolute; left: 0; top: -5px; }
+        .img-placeholder { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(236, 64, 122, 0.15); transition: transform 0.3s; border: 4px solid white; }
         .img-placeholder:hover { transform: translateY(-5px); }
-        .caption {
-            text-align: center;
-            font-size: 0.85rem;
-            color: #90a4ae;
-            margin-top: 15px;
-            font-weight: 500;
-        }
-
-        /* --- HIGHLIGHT BOX --- */
-        .highlight-box {
-            background-color: white;
-            border-left: 5px solid #ec407a;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            font-weight: 500;
-            color: #37474f;
-        }
-
-        /* --- FOOTER (Centered & White) --- */
-        .footer {
-            background-color: #37474f; /* Dark Background */
-            color: white; /* Text Color */
-            text-align: center; /* Center Alignment */
-            padding: 80px 20px;
-            margin-top: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .footer h2 {
-            color: white !important; /* Force White */
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .footer p {
-            color: #cfd8dc;
-            text-align: center !important;
-            margin: 0 auto 30px auto;
-        }
-        .btn-back {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: #ec407a;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
+        .caption { text-align: center; font-size: 0.85rem; color: #90a4ae; margin-top: 15px; font-weight: 500; }
+        .highlight-box { background-color: white; border-left: 5px solid #ec407a; padding: 25px; border-radius: 8px; margin: 30px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.05); font-weight: 500; color: #37474f; }
+        
+        /* Footer */
+        .footer { background-color: #37474f; color: white; text-align: center; padding: 80px 20px; margin-top: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .footer h2 { color: white !important; margin-bottom: 10px; text-align: center; }
+        .footer p { color: #cfd8dc; text-align: center !important; margin: 0 auto 30px auto; }
+        .btn-back { display: inline-block; padding: 15px 40px; background-color: #ec407a; color: white; text-decoration: none; border-radius: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         .btn-back:hover { background-color: white; color: #ec407a; }
     </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-brand">Suriyapriya S.</a>
-        <div class="nav-links">
-            <a href="index.html">Portfolio Home</a>
-            <a href="#gan-architecture">GAN Architecture</a>
-            <a href="#training">Training Process</a>
-            <a href="#results">Results</a>
-        </div>
+        <div class="nav-links"><a href="index.html">Portfolio Home</a><a href="#architecture">Architecture</a><a href="#training">Training</a><a href="#results">Results</a></div>
     </nav>
-
     <header class="project-header">
         <div class="container" style="padding:0;">
-            <h1 class="project-title">Synthetic Time Series Data Generation</h1>
-            <div class="project-subtitle">Creating Virtual Twins for ICU Patient Monitoring</div>
-            <div class="header-meta">
-                <span style="margin: 0 15px;"><i class="fa fa-calendar"></i> April 2023</span>
-                <span style="margin: 0 15px;"><i class="fa fa-code"></i> Python, TensorFlow, GANs, Autoencoders</span>
-                <span style="margin: 0 15px;"><i class="fa fa-users"></i> Role: Algorithm Developer</span>
-            </div>
+            <h1 class="project-title">Synthetic ICU Data Generation</h1>
+            <div class="project-subtitle">Addressing Data Scarcity with Time-Series GANs</div>
+            <div class="header-meta"><span style="margin: 0 15px;"><i class="fa fa-calendar"></i> Fall 2024</span><span style="margin: 0 15px;"><i class="fa fa-code"></i> Python, TensorFlow, TimeGAN</span><span style="margin: 0 15px;"><i class="fa fa-users"></i> Role: AI Researcher</span></div>
         </div>
     </header>
-
     <div class="container">
-
+        
         <div class="section" id="intro">
             <div class="text-col">
-                <h2>The Challenge: Data Scarcity</h2>
-                <p>
-                    In healthcare, collecting large-scale, high-quality patient data is notoriously difficult due to privacy regulations (HIPAA/GDPR) and the high cost of annotation. This scarcity hinders the training of robust deep learning models for critical tasks like arrhythmia detection in ICUs.
-                </p>
-                <div class="highlight-box">
-                    <strong>Project Goal:</strong> "To generate high-fidelity synthetic time-series data (ECG signals) using Generative Adversarial Networks (GANs), effectively creating 'virtual twins' that can be used for training without compromising patient privacy."
-                </div>
-                <p>
-                    By augmenting real datasets with synthetic ones, we aim to improve the generalization capabilities of diagnostic models in data-scarce environments.
-                </p>
+                <h2>The Challenge: Data Privacy</h2>
+                <p>Medical research is often bottlenecked by strict privacy regulations (HIPAA) and data scarcity. Real-world ICU data is highly sensitive, making it difficult to share for training robust Machine Learning models.</p>
+                <div class="highlight-box"><strong>Solution:</strong> "Generate high-fidelity <strong>synthetic time-series data</strong> that preserves the statistical properties of real patient vitals without compromising patient privacy."</div>
+                <p>We focused on generating synthetic signals for <strong>Heart Rate, Blood Pressure, and SpO2</strong> using a Generative Adversarial Network (GAN) framework.</p>
             </div>
             <div class="img-col">
-                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Real+vs+Synthetic+ECG" class="img-placeholder">
-                <div class="caption">Figure 1: Comparison of Real Patient ECGs vs. GAN-Generated "Virtual" ECGs.</div>
+                <img src="assets/img/methodology.png" class="img-placeholder" alt="Overall Methodology Pipeline">
+                <div class="caption">Figure 1: Project Pipeline – From Raw ICU Signals to Synthetic Data Generation.</div>
             </div>
         </div>
 
-        <div class="section" id="gan-architecture">
+        <div class="section" id="architecture">
             <div class="img-col">
-                <img src="https://placehold.co/600x500/37474f/white?text=GAN+Architecture+Diagram" class="img-placeholder">
-                <div class="caption">Figure 2: Generator and Discriminator Network Topology.</div>
+                <img src="assets/img/gan architecture.png" class="img-placeholder" alt="TimeGAN Architecture Diagram">
+                <div class="caption">Figure 2: TimeGAN Architecture – Combining Autoencoders with Adversarial Networks.</div>
             </div>
             <div class="text-col">
-                <h2>GAN Architecture & Methodology</h2>
-                <p>
-                    We implemented a <strong>Generative Adversarial Network (GAN)</strong> specifically adapted for time-series data. The system consists of two competing neural networks:
-                </p>
+                <h2>Model Architecture: TimeGAN</h2>
+                <p>Standard GANs struggle with the temporal correlations found in time-series data. We implemented <strong>TimeGAN</strong>, which introduces an embedding network to learn the underlying dynamics.</p>
+                <h3>Key Components</h3>
                 <ul>
-                    <li><strong>The Generator:</strong> Takes random noise vectors as input and attempts to construct realistic ECG waveforms that mimic the statistical properties of the training set.</li>
-                    <li><strong>The Discriminator:</strong> A binary classifier that evaluates input signals and tries to distinguish between "Real" (from the dataset) and "Fake" (from the Generator).</li>
+                    <li><strong>Embedding Function:</strong> Maps static and temporal features into a latent space.</li>
+                    <li><strong>Recovery Function:</strong> Reconstructs the data from the latent space (Autoencoder loss).</li>
+                    <li><strong>Generator & Discriminator:</strong> Compete to produce realistic sequences (Adversarial loss).</li>
                 </ul>
-                <h3>Optimization Strategy</h3>
-                <p>
-                    We utilized the <strong>Adam Optimizer</strong> with a learning rate of <code>1.5e-4</code> and a beta value of <code>0.5</code> to ensure stable convergence during the adversarial training process.
-                </p>
             </div>
         </div>
 
         <div class="section" id="training">
             <div class="text-col">
-                <h2>Training & Loss Functions</h2>
-                <p>
-                    The training process involves a zero-sum game where the Generator minimizes the probability of the Discriminator catching a fake, while the Discriminator maximizes its detection accuracy.
-                </p>
-                <h3>Loss Calculation</h3>
-                <p>
-                    We implemented <strong>Binary Cross-Entropy Loss</strong> to quantify the performance of both networks:
-                </p>
-                <ul>
-                    <li><strong>Discriminator Loss:</strong> <code>real_loss + fake_loss</code>. It penalizes the model when it misclassifies a real image as fake or a fake image as real.</li>
-                    <li><strong>Generator Loss:</strong> Calculated based on the Discriminator's ability to detect fakes. The Generator is rewarded when the Discriminator mistakenly classifies a fake image as real.</li>
-                </ul>
-                <div class="highlight-box">
-                    <strong>Code Implementation:</strong>
-                    <pre style="background:#eee; padding:10px; border-radius:5px; font-size:0.8rem;">
-def discriminator_loss(real_output, fake_output):
-    real_loss = cross_entropy(tf.ones_like(real_output), real_output)
-    fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
-    return real_loss + fake_loss
-                    </pre>
-                </div>
+                <h2>Training Dynamics</h2>
+                <p>The training process involves a "Min-Max" game. The Generator tries to create fake vitals that look real, while the Discriminator tries to distinguish between real ICU data and the synthetic output.</p>
+                <div class="highlight-box"><strong>Supervised Loss:</strong> Unlike vanilla GANs, we added a supervised loss component to force the model to capture the <em>step-by-step</em> temporal transition of vital signs (e.g., if BP drops, Heart Rate might spike).</div>
             </div>
             <div class="img-col">
-                <img src="https://placehold.co/600x400/ec407a/white?text=Training+Loss+Curves" class="img-placeholder">
-                <div class="caption">Figure 3: Convergence of Generator and Discriminator losses over epochs.</div>
+                <img src="assets/img/discriminator-generator-working.png" class="img-placeholder" alt="Generator vs Discriminator Logic">
+                <div class="caption">Figure 3: The Adversarial Game – How the Generator learns from the Discriminator's feedback.</div>
             </div>
         </div>
 
         <div class="section" id="results">
             <div class="img-col">
-                <img src="https://placehold.co/600x400/37474f/white?text=Generated+Time+Series" class="img-placeholder">
-                <div class="caption">Figure 4: Final synthetic time-series data ready for model training.</div>
+                <img src="assets/img/classification-of-timeseries.png" class="img-placeholder" alt="Classification Performance on Synthetic Data">
+                <div class="caption">Figure 4: TSTR Evaluation – Classifying patient outcomes using only Synthetic Data.</div>
             </div>
             <div class="text-col">
-                <h2>Results & Strategic Impact</h2>
-                <p>
-                    The project successfully demonstrated that GANs can generate high-fidelity synthetic data for ICU monitoring.
-                </p>
-                <h3>Key Outcomes:</h3>
+                <h2>Validation: TSTR Analysis</h2>
+                <p>To prove the utility of our synthetic data, we used the <strong>Train on Synthetic, Test on Real (TSTR)</strong> methodology.</p>
+                <h3>Results</h3>
+                <p>We trained a classifier solely on our generated synthetic data and tested it on real hold-out patient data.</p>
                 <ul>
-                    <li><strong>Data Augmentation:</strong> Created a virtually infinite stream of synthetic ECG data, allowing for the training of deeper, more complex neural networks without overfitting.</li>
-                    <li><strong>Privacy Preservation:</strong> The synthetic data retains the statistical properties of the patient population but contains no personally identifiable information (PII), resolving HIPAA constraints.</li>
-                    <li><strong>Robustness:</strong> Models trained on the augmented dataset (Real + Synthetic) showed improved generalization when tested on unseen real-world data.</li>
+                    <li><strong>Fidelity:</strong> The synthetic data successfully captured the diverse patterns of ICU vitals.</li>
+                    <li><strong>Utility:</strong> The classifier achieved near-identical accuracy (within 2%) compared to a model trained on real data, proving the synthetic data is a viable substitute for research.</li>
                 </ul>
             </div>
         </div>
 
     </div>
-
-    <div class="footer">
-        <h2>Ready to see more?</h2>
-        <p style="color: #cfd8dc;">Explore my other projects or get in touch.</p>
-        <a href="index.html" class="btn-back">Back to Portfolio</a>
-    </div>
-
+    <div class="footer"><h2>Ready to see more?</h2><p>Explore my other projects or get in touch.</p><a href="index.html" class="btn-back">Back to Portfolio</a></div>
 </body>
 </html>
