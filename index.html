@@ -53,8 +53,27 @@
     .btn-case-study { background-color: transparent; color: var(--primary-rose); border: 2px solid var(--primary-rose); border-radius: 4px; padding: 8px 15px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; width: 100%; text-align: center; margin-top: 15px; display: block; transition: 0.3s; }
     .btn-case-study:hover { background-color: var(--primary-rose); color: white; }
 
-    /* --- SKILLS & FOOTER --- */
+    /* --- SKILLS, CHIPS & FOOTER --- */
     .skill-item { margin-bottom: 25px; } .skill-img { height: 50px; margin-bottom: 10px; } .skill-title { font-weight: 600; font-size: 0.9rem; }
+    
+    /* Coursework Chips Style */
+    .course-chip {
+        display: inline-block;
+        background-color: var(--sidebar-pink); /* Light Pink Background */
+        color: #c2185b; /* Darker Pink/Red Text for contrast */
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 3px;
+        border: 1px solid rgba(236, 64, 122, 0.2);
+    }
+    .course-chip.ug {
+        background-color: #e0f2f1; /* Light Teal for UG to differentiate slightly, or allow plain pink */
+        color: #00695c;
+        border: 1px solid rgba(0, 105, 92, 0.2);
+    }
+
     footer { background-color: var(--sidebar-pink); padding: 40px 0; text-align: center; color: var(--text-slate); margin-top: 50px; }
     .social-icon { font-size: 2rem; color: var(--text-slate); margin: 0 15px; transition: color 0.3s; } .social-icon:hover { color: var(--primary-rose); }
     .row.flex { display: flex; flex-wrap: wrap; }
@@ -157,27 +176,55 @@
 
     <section id="education" class="scrollspy" style="margin-top: 80px;"><div class="container"><h3 class="page-title">Education</h3>
       <div class="row flex">
-        <div class="col s12 m6">
+        <div class="col s12 m12 l6">
           <div class="card">
             <div class="card-content">
               <span class="exp-company">Carnegie Mellon University</span>
               <p style="font-weight: 600;">Pittsburgh, PA | May 2026</p>
               <p>MS in Health Care Analytics & IT</p>
-              <div style="margin-top: 15px; font-size: 0.9rem; color: #546e7a;">
-                <strong>Relevant Coursework:</strong> Machine Learning, Advanced AI, Natural Language Processing, Data Science for Product Managers, Statistics, Applied Econometrics, Optimization, Programming R with Analytics, Decision & Risk Modeling, Responsible AI, Telling Stories with Data, Healthcare Information Systems, Managing Analytics Projects.
+              
+              <div style="margin-top: 20px;">
+                <h5 style="font-size: 1rem; font-weight: 800; color: #37474f; margin-bottom: 10px;">Graduate Coursework</h5>
+                <div>
+                  <span class="course-chip">Database Management for Policy Analytics</span>
+                  <span class="course-chip">Healthcare Information Systems</span>
+                  <span class="course-chip">Applications of NLP & LLMs</span>
+                  <span class="course-chip">Generative AI Lab</span>
+                  <span class="course-chip">Applied Econometrics</span>
+                  <span class="course-chip">Health Economics</span>
+                  <span class="course-chip">Accounting & Finance Analytics</span>
+                  <span class="course-chip">Intermediate Statistics</span>
+                  <span class="course-chip">Optimization</span>
+                  <span class="course-chip">Decision & Risk Modeling</span>
+                  <span class="course-chip">Discrete Event Simulation</span>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
-        <div class="col s12 m6">
+        <div class="col s12 m12 l6">
           <div class="card">
             <div class="card-content">
               <span class="exp-company">PSG College of Technology</span>
               <p style="font-weight: 600;">India | Apr 2023</p>
               <p>BE in Biomedical Engineering</p>
-              <div style="margin-top: 15px; font-size: 0.9rem; color: #546e7a;">
-                <strong>Relevant Coursework:</strong> Machine Learning & Data Science, Artificial Intelligence, Pattern Recognition & Neural Networks, Statistics, Digital Signal Processing, Medical Informatics.
+              
+              <div style="margin-top: 20px;">
+                <h5 style="font-size: 1rem; font-weight: 800; color: #37474f; margin-bottom: 10px;">Undergraduate Coursework</h5>
+                <div>
+                    <span class="course-chip ug">Database Systems</span>
+                    <span class="course-chip ug">Computational Expression</span>
+                    <span class="course-chip ug">Computer Organization</span>
+                    <span class="course-chip ug">Discrete Structures</span>
+                    <span class="course-chip ug">Programming Languages</span>
+                    <span class="course-chip ug">Global Health Data</span>
+                    <span class="course-chip ug">Genetics</span>
+                    <span class="course-chip ug">Microbiology</span>
+                    <span class="course-chip ug">Medical Anthropology and Health in Asia</span>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
