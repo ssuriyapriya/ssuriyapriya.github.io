@@ -2,52 +2,349 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NLP Text Summarizer | Suriyapriya S.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Text Summarizer for Medical Reports | Suriyapriya S.</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <style>
-        /* Reuse styles from diabetes file */
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; color: #37474f; background-color: #fafafa; }
-        .header { background-color: #fce4ec; padding: 80px 20px; text-align: center; border-bottom: 5px solid #ec407a; }
-        .title { font-size: 2.8rem; font-weight: 900; color: #37474f; }
-        .subtitle { font-size: 1.2rem; color: #ec407a; font-weight: 600; text-transform: uppercase; margin-top: 10px; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .section { display: flex; flex-wrap: wrap; margin-bottom: 60px; align-items: center; }
-        .section:nth-child(even) { flex-direction: row-reverse; }
-        .text-col { flex: 1; padding: 30px; min-width: 300px; }
-        .img-col { flex: 1; padding: 20px; min-width: 300px; }
-        .img-placeholder { width: 100%; border-radius: 8px; }
-        h2 { color: #ec407a; font-size: 1.8rem; margin-bottom: 15px; font-weight: 800; }
-        p, li { font-size: 1.1rem; line-height: 1.8; color: #546e7a; margin-bottom: 10px; }
-        .back-btn { display: inline-block; padding: 10px 25px; background: #37474f; color: white; text-decoration: none; border-radius: 50px; font-weight: 700; margin-bottom: 40px; }
+        /* --- GLOBAL STYLES (Matching Portfolio Theme) --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #546e7a; /* Slate Grey Text */
+            background-color: #fafafa; /* Off-white background */
+            line-height: 1.8;
+        }
+
+        /* --- HEADER --- */
+        .project-header {
+            background-color: #fce4ec; /* Subtle Pink Background */
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 6px solid #ec407a; /* Hot Pink Border */
+        }
+        .project-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #37474f; /* Dark Slate */
+            margin: 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ec407a; /* Hot Pink */
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header-meta {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #78909c;
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-bar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand { font-weight: 800; font-size: 1.2rem; color: #ec407a; text-decoration: none; }
+        .nav-links a {
+            color: #37474f;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #ec407a; }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* --- SECTIONS (ALTERNATE LAYOUT) --- */
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 100px;
+            gap: 60px;
+        }
+        
+        /* Alternate: Even sections flip order */
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text-col {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .img-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ec407a; /* Hot Pink Topic Headings */
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #37474f;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p { margin-bottom: 20px; text-align: justify; font-size: 1.05rem; }
+        
+        ul { list-style: none; padding: 0; }
+        li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        li::before {
+            content: "•";
+            color: #ec407a;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* --- IMAGES --- */
+        .img-placeholder {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(236, 64, 122, 0.15); /* Pink shadow */
+            transition: transform 0.3s;
+            border: 4px solid white;
+        }
+        .img-placeholder:hover { transform: translateY(-5px); }
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #90a4ae;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        /* --- TABLE STYLING --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        th { background-color: #ec407a; color: white; padding: 15px; text-align: left; font-weight: 700; }
+        td { padding: 15px; border-bottom: 1px solid #eee; color: #546e7a; }
+        tr:last-child td { border-bottom: none; }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background-color: white;
+            border-left: 5px solid #ec407a;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            font-weight: 500;
+            color: #37474f;
+        }
+
+        /* --- FOOTER (Centered & White) --- */
+        .footer {
+            background-color: #37474f; /* Dark Background */
+            color: white; /* Text Color */
+            text-align: center; /* Center Alignment */
+            padding: 80px 20px;
+            margin-top: 100px;
+        }
+        .footer h2 {
+            color: white !important; /* Force White */
+            margin-bottom: 10px;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background-color: #ec407a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .btn-back:hover { background-color: white; color: #ec407a; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1 class="title">NLP Based Text Summarizer</h1>
-        <div class="subtitle">Extracting Clinical Insights from Medical Reports</div>
-    </div>
-    <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
 
-        <div class="section">
-            <div class="text-col">
-                <h2>Project Overview</h2>
-                <p>Medical reports contain vast amounts of unstructured text that are time-consuming for clinicians to review. This project developed an NLP system to automatically generate concise summaries of medical reports, retaining critical clinical entities like diagnosis and treatment plans.</p>
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-brand">Suriyapriya S.</a>
+        <div class="nav-links">
+            <a href="index.html">Portfolio Home</a>
+            <a href="#pipeline">Methodology</a>
+            <a href="#ocr">OCR Engine</a>
+            <a href="#results">Results</a>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container" style="padding:0;">
+            <h1 class="project-title">NLP Based Text Summarizer</h1>
+            <div class="project-subtitle">Automated Information Extraction from Medical Reports</div>
+            <div class="header-meta">
+                <span style="margin: 0 15px;"><i class="fa fa-calendar"></i> April 2023</span>
+                <span style="margin: 0 15px;"><i class="fa fa-code"></i> Python, OpenCV, Pytesseract, EAST</span>
+                <span style="margin: 0 15px;"><i class="fa fa-users"></i> Role: Algorithm Developer</span>
             </div>
-            <div class="img-col"><img src="https://placehold.co/500x350/ec407a/white?text=NLP+Pipeline" class="img-placeholder"></div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="section" id="intro">
+            <div class="text-col">
+                <h2>The Challenge: Unstructured Data</h2>
+                <p>
+                    Medical errors due to wrong interpretation of prescriptions are common and can result in significant harm to patients. The Institute of Medicine (IoM) estimates that <strong>7,000 preventable deaths annually</strong> are attributed to illegible handwriting.
+                </p>
+                <p>
+                    Furthermore, manual data entry of medical reports is time-consuming and prone to "fat-finger" errors. Existing systems often fail to handle the complexity of mixed handwritten and printed text found in real-world clinical environments.
+                </p>
+                <div class="highlight-box">
+                    <strong>Project Goal:</strong> "To develop a system that interprets handwritten medical notes into a digital form, converting unstructured data into a structured, searchable, and easily readable format."
+                </div>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Input+Medical+Report" class="img-placeholder">
+                <div class="caption">Figure 1: Sample Input - A scanned medical report with mixed text types.</div>
+            </div>
         </div>
 
-        <div class="section" style="background-color: white; border-radius: 12px; padding: 20px;">
-            <div class="img-col"><img src="https://placehold.co/500x350/37474f/white?text=Architecture" class="img-placeholder"></div>
+        <div class="section" id="pipeline">
+            <div class="img-col">
+                <img src="https://placehold.co/600x500/37474f/white?text=Methodology+Flowchart+(Fig+4.1)" class="img-placeholder">
+                <div class="caption">Figure 2: System Architecture (Adaptive Thresholding -> CCA -> Recognition).</div>
+            </div>
             <div class="text-col">
-                <h2>Key Methodology</h2>
+                <h2>System Architecture & Methodology</h2>
+                <p>
+                    The solution utilizes a multi-stage pipeline combining Computer Vision for preprocessing and Deep Learning for recognition. The framework (Figure 4.1 in report) follows these critical steps:
+                </p>
                 <ul>
-                    <li><strong>Architecture:</strong> Utilized Bidirectional LSTM (Bi-LSTM) networks with Attention mechanisms to handle the sequential nature of clinical text.</li>
-                    <li><strong>Preprocessing:</strong> Implemented extensive text cleaning, tokenization, and stop-word removal specific to medical ontology.</li>
-                    <li><strong>Evaluation:</strong> Assessed model performance using ROUGE scores to ensure summaries accurately reflected the source text.</li>
+                    <li><strong>Adaptive Thresholding:</strong> Used OpenCV to convert grayscale images into binary format, separating text from the background using Otsu's method to handle non-uniform lighting.</li>
+                    <li><strong>Connected Component Analysis (CCA):</strong> Algorithms like the two-pass algorithm were used to identify and label groups of pixels (character blobs) to segment text regions.</li>
+                    <li><strong>EAST Text Detector:</strong> Implemented the Efficient and Accurate Scene Text (EAST) detector to localize word regions even in complex, noisy document backgrounds.</li>
                 </ul>
             </div>
         </div>
+
+        <div class="section" id="ocr">
+            <div class="text-col">
+                <h2>OCR & Text Recognition Engine</h2>
+                <p>
+                    We employed a hybrid approach to handle the variability of medical text.
+                </p>
+                <h3>1. Pytesseract (Tesseract 4.0)</h3>
+                <p>
+                    Used as the primary engine for printed text. It leverages Long Short-Term Memory (LSTM) networks to recognize character sequences. We fine-tuned it to recognize medical ontology by feeding it specific vocabulary lists.
+                </p>
+                <h3>2. Nanonet OCR</h3>
+                <p>
+                    Integrated for its superior performance on handwriting. It uses a deep learning-based approach to correct for orientation and skew, which is common in scanned medical files.
+                </p>
+                <div class="highlight-box">
+                    <strong>Code Implementation:</strong> "Used <code>cv2.FONT_HERSHEY_SIMPLEX</code> for overlaying recognized text and <code>pytesseract.image_to_string</code> with custom config for segmentation."
+                </div>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/ec407a/white?text=Python+Code+Snippet+(Fig+5.2)" class="img-placeholder">
+                <div class="caption">Figure 3: Python implementation using OpenCV and Tesseract libraries.</div>
+            </div>
+        </div>
+
+        <div class="section" id="results">
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/37474f/white?text=Confusion+Matrix+(Fig+5.6)" class="img-placeholder">
+                <div class="caption">Figure 4: Confusion Matrix showing classification performance across text types.</div>
+            </div>
+            <div class="text-col">
+                <h2>Performance Evaluation</h2>
+                <p>
+                    The model was tested on a dataset of 772 handwritten cursive images and printed reports. We measured accuracy at both the character and word levels.
+                </p>
+                <h3>Key Metrics:</h3>
+                <ul>
+                    <li><strong>Overall Accuracy:</strong> Achieved <strong>91.26%</strong> overall accuracy, outperforming standard baselines (Wei et al. at 90.6%).</li>
+                    <li><strong>Printed Text:</strong> High precision with <strong>99.04%</strong> character accuracy and <strong>94.79%</strong> word accuracy.</li>
+                    <li><strong>Handwritten Cursive:</strong> The most challenging category, achieving <strong>84.75%</strong> character accuracy with autocorrect enabled.</li>
+                </ul>
+                <p>
+                    The Confusion Matrix (Fig 5.6) demonstrates a classification accuracy of <strong>82.1%</strong> across Cursive, Discrete, and Printed text categories.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-col">
+                <h2>Conclusion & Future Scope</h2>
+                <p>
+                    This project successfully demonstrated that a deep-learning-based OCR pipeline can digitize medical reports with high fidelity. By automating data entry, we reduce the administrative burden on healthcare professionals and minimize transcription errors.
+                </p>
+                <h3>Future Enhancements:</h3>
+                <ul>
+                    <li><strong>Mobile Integration:</strong> Developing a mobile app wrapper to allow doctors to scan prescriptions via smartphone cameras.</li>
+                    <li><strong>NLP Summarization:</strong> Extending the pipeline to not just transcribe, but <em>summarize</em> the extracted text into key medical entities (Diagnosis, Dosage, Frequency) using Named Entity Recognition (NER).</li>
+                </ul>
+            </div>
+            <div class="img-col">
+                <img src="https://placehold.co/600x400/fce4ec/ec407a?text=Final+Output+Visualization" class="img-placeholder">
+                <div class="caption">Figure 5: Final digitized output overlaid on the original medical report.</div>
+            </div>
+        </div>
+
     </div>
+
+    <div class="footer">
+        <h2>Ready to see more?</h2>
+        <p>Explore my other projects or get in touch.</p>
+        <a href="index.html" class="btn-back">Back to Portfolio</a>
+    </div>
+
 </body>
 </html>
